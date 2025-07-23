@@ -1,6 +1,6 @@
 'use server';
 
-import {SendEmailCommand, SESClient} from '@aws-sdk/client-ses';
+import {AwsClient} from 'aws4fetch';
 
 type TurnstileValidationErrorCode =
   /** The secret parameter was not passed. */
@@ -27,13 +27,54 @@ interface TurnstileValidationResponse {
   'cdata'?: string
 }
 
-const sesClient = new SESClient({
-  region: process.env.AWS_REGION || '',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY || '',
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ''
-  }
+const aws = new AwsClient({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
+  region: process.env.AWS_REGION || ''
 });
+
+async function sendSES(params: {
+  toAddresses: string[];
+  subject: string;
+  htmlMessage: string;
+  textMessage: string;
+}) {
+  const response = await aws.fetch(`https://email.${process.env.AWS_REGION || ''}.amazonaws.com/v2/email/outbound-emails`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      Destination: {
+        ToAddresses: params.toAddresses,
+      },
+      FromEmailAddress: 'Tristan Trommer <noreply@tristantrommer.com>',
+      Content: {
+        Simple: {
+          Subject: {
+            Data: params.subject,
+          },
+          Body: {
+            Text: {
+              Data: params.textMessage,
+            },
+            Html: {
+              Data: params.htmlMessage,
+            }
+          }
+        },
+      },
+    }),
+  });
+
+  const responseText = await response.json();
+
+  if (response.status != 200 && response.status != 201) {
+    throw new Error(response.status + " " + response.statusText + " " + responseText);
+  }
+
+  return response.status;
+}
 
 export const email = async (formData: FormData) => {
   const email = formData.get('email');
@@ -68,61 +109,23 @@ export const email = async (formData: FormData) => {
   }
 
   try {
-    const recipientEmailParams = {
-      Source: 'Tristan Trommer <noreply@tristantrommer.com>',
-      Destination: {
-        ToAddresses: ['hi@tristantrommer.com']
-      },
-      Message: {
-        Subject: {
-          Data: `${name} sent a message via contact form!`,
-          Charset: 'UTF-8'
-        },
-        Body: {
-          Html: {
-            Data: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
-            Charset: 'UTF-8'
-          },
-          Text: {
-            Data: `Name: ${name} Email: ${email} Message: ${message}`,
-            Charset: 'UTF-8'
-          }
-        }
-      }
-    };
+    await sendSES({
+      toAddresses: ['hi@tristantrommer.com'],
+      subject: `${name} sent a message via contact form!`,
+      htmlMessage: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
+      textMessage: `Name: ${name} Email: ${email} Message: ${message}`
+    });
 
-    const senderEmailParams = {
-      Source: 'Tristan Trommer <noreply@tristantrommer.com>',
-      Destination: {
-        ToAddresses: [email.toString()]
-      },
-      Message: {
-        Subject: {
-          Data: `Thanks for your message, ${name}!`,
-          Charset: 'UTF-8'
-        },
-        Body: {
-          Html: {
-            Data: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
-            Charset: 'UTF-8'
-          },
-          Text: {
-            Data: `Thanks for your message, ${name}! I will get back to you soon.`,
-            Charset: 'UTF-8'
-          }
-        }
-      }
-    };
-
-    await Promise.all([
-      sesClient.send(new SendEmailCommand(recipientEmailParams)),
-      sesClient.send(new SendEmailCommand(senderEmailParams))
-    ]);
+    await sendSES({
+      toAddresses: [email.toString()],
+      subject: `Thanks for your message, ${name}!`,
+      htmlMessage: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
+      textMessage: `Thanks for your message, ${name}! I will get back to you soon.`
+    });
 
     return {
       error: false
     };
-
   } catch (error) {
     console.error('Error sending email:', error);
 
