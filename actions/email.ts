@@ -1,7 +1,9 @@
 'use server';
 
+import {SendEmailCommand, SESClient} from '@aws-sdk/client-ses';
+
 type TurnstileValidationErrorCode =
-/** The secret parameter was not passed. */
+  /** The secret parameter was not passed. */
   | 'missing-input-secret'
   /** The secret parameter was invalid or did not exist. */
   | 'invalid-input-secret'
@@ -20,22 +22,31 @@ interface TurnstileValidationResponse {
   'success': boolean
   'hostname': string
   'error-codes': TurnstileValidationErrorCode[]
-
   'challenge_ts'?: string
   'action'?: string
   'cdata'?: string
 }
 
-export const email = async (formData: FormData) => {
-  const emailApi = process.env.EMAIL_API || '';
-  const emailApiKey = process.env.EMAIL_API_KEY || '';
+const sesClient = new SESClient({
+  region: process.env.AWS_REGION || '',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY || '',
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ''
+  }
+});
 
+export const email = async (formData: FormData) => {
   const email = formData.get('email');
   const name = formData.get('name');
   const message = formData.get('message');
   const turnstileToken = formData.get('cf-turnstile-response');
 
-  if ((!email || typeof email !== 'string' || (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) || (!name || typeof name !== 'string') || (!message || typeof message !== 'string') || (!turnstileToken || typeof turnstileToken !== 'string')) {
+  if (
+    (!email || typeof email !== 'string' || (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) ||
+    (!name || typeof name !== 'string') ||
+    (!message || typeof message !== 'string') ||
+    (!turnstileToken || typeof turnstileToken !== 'string')
+  ) {
     return {
       error: true
     };
@@ -48,6 +59,7 @@ export const email = async (formData: FormData) => {
       'content-type': 'application/x-www-form-urlencoded'
     }
   });
+
   const turnstileData = await trunstileResponse.json() as TurnstileValidationResponse;
   if (!turnstileData.success) {
     return {
@@ -55,41 +67,67 @@ export const email = async (formData: FormData) => {
     };
   }
 
-  const recipientEmailResponse = await fetch(emailApi, {
-    method: 'POST',
-    body: JSON.stringify({
-      'to': 'hi@tristantrommer.com',
-      'from': 'Tristan Trommer <noreply@tristantrommer.com>',
-      'subject': `${name} sent a message via contact form!`,
-      'html': `Name: ${name}<br/><br/>Email: ${email}<br/><br/>Message: ${message}`,
-      'text': `Name: ${name} Email: ${email} Message: ${message}`
-    }),
-    headers: {
-      'content-type': 'application/json',
-      'Authorization': 'Basic ' + emailApiKey
-    }
-  });
-  const senderEmailResponse = await fetch(emailApi, {
-    method: 'POST',
-    body: JSON.stringify({
-      'to': email,
-      'from': 'Tristan Trommer <noreply@tristantrommer.com>',
-      'subject': `Thanks for your message, ${name}!`,
-      'html': `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
-      'text': `Thanks for your message, ${name}! I will get back to you soon.`
-    }),
-    headers: {
-      'content-type': 'application/json',
-      'Authorization': 'Basic ' + emailApiKey
-    }
-  });
-  if (!recipientEmailResponse.ok || !senderEmailResponse.ok) {
+  try {
+    const recipientEmailParams = {
+      Source: 'Tristan Trommer <noreply@tristantrommer.com>',
+      Destination: {
+        ToAddresses: ['hi@tristantrommer.com']
+      },
+      Message: {
+        Subject: {
+          Data: `${name} sent a message via contact form!`,
+          Charset: 'UTF-8'
+        },
+        Body: {
+          Html: {
+            Data: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
+            Charset: 'UTF-8'
+          },
+          Text: {
+            Data: `Name: ${name} Email: ${email} Message: ${message}`,
+            Charset: 'UTF-8'
+          }
+        }
+      }
+    };
+
+    const senderEmailParams = {
+      Source: 'Tristan Trommer <noreply@tristantrommer.com>',
+      Destination: {
+        ToAddresses: [email.toString()]
+      },
+      Message: {
+        Subject: {
+          Data: `Thanks for your message, ${name}!`,
+          Charset: 'UTF-8'
+        },
+        Body: {
+          Html: {
+            Data: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
+            Charset: 'UTF-8'
+          },
+          Text: {
+            Data: `Thanks for your message, ${name}! I will get back to you soon.`,
+            Charset: 'UTF-8'
+          }
+        }
+      }
+    };
+
+    await Promise.all([
+      sesClient.send(new SendEmailCommand(recipientEmailParams)),
+      sesClient.send(new SendEmailCommand(senderEmailParams))
+    ]);
+
+    return {
+      error: false
+    };
+
+  } catch (error) {
+    console.error('Error sending email:', error);
+
     return {
       error: true
     };
   }
-
-  return {
-    error: false
-  };
 };
