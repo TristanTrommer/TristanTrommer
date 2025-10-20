@@ -1,0 +1,62 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tristantrommer",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tristantrommer"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "tristantrommer-cache"
+    }
+  ],
+  "route": {
+    "pattern": "tristantrommer.com",
+    "custom_domain": true
+  },
+  "env": {
+    "preview": {
+      "observability": {
+        "enabled": true
+      },
+      "assets": {
+        "binding": "ASSETS",
+        "directory": ".open-next/assets"
+      },
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "tristantrommer-preview"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "NEXT_INC_CACHE_R2_BUCKET",
+          "bucket_name": "tristantrommer-cache-preview"
+        }
+      ],
+      "route": {
+        "pattern": "preview.tristantrommer.com",
+        "custom_domain": true
+      }
+    }
+  },
+  "workers_dev": false,
+  "preview_urls": false
+}
