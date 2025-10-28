@@ -1,10 +1,11 @@
-import {MetadataRoute} from 'next';
+import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Tristan Trommer',
     short_name: 'Tristan Trommer',
-    description: 'Hello, I\'m Tristan Trommer. I\'m a passionate Software Engineer.',
+    description:
+      "Hello, I'm Tristan Trommer. I'm a passionate Software Engineer.",
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

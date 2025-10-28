@@ -1,6 +1,6 @@
 'use client';
 
-import {useActiveHash} from '@/hooks/useActiveHash';
+import { useActiveHash } from '@/hooks/useActiveHash';
 import React from 'react';
 
 interface TagItem {
@@ -17,7 +17,7 @@ interface TagItem {
 }
 
 export default function Skills() {
-  const {ref} = useActiveHash('Skills');
+  const { ref } = useActiveHash('Skills');
 
   const texts: string[] = [
     'Agile Methodologies',
@@ -76,7 +76,7 @@ export default function Skills() {
     });
   };
 
-  const {radius, maxSpeed, initSpeed, direction} = {
+  const { radius, maxSpeed, initSpeed, direction } = {
     radius: 350 as number,
     maxSpeed: 20 as number,
     initSpeed: 40 as number,
@@ -89,14 +89,20 @@ export default function Skills() {
   const tagCloudRef = React.useRef<HTMLDivElement | null>(null);
   const [items, setItems] = React.useState<TagItem[]>(createInitialState(size));
 
-  const mouseX0 = React.useRef<number>(initSpeed * Math.sin(direction * (Math.PI / 180)));
-  const mouseY0 = React.useRef<number>(-initSpeed * Math.cos(direction * (Math.PI / 180)));
+  const mouseX0 = React.useRef<number>(
+    initSpeed * Math.sin(direction * (Math.PI / 180))
+  );
+  const mouseY0 = React.useRef<number>(
+    -initSpeed * Math.cos(direction * (Math.PI / 180))
+  );
   const mouseX = React.useRef<number>(mouseX0.current);
   const mouseY = React.useRef<number>(mouseY0.current);
 
   const next = React.useCallback(() => {
-    const a = -(Math.min(Math.max(-mouseY.current, -size), size) / radius) * maxSpeed;
-    const b = (Math.min(Math.max(-mouseX.current, -size), size) / radius) * maxSpeed;
+    const a =
+      -(Math.min(Math.max(-mouseY.current, -size), size) / radius) * maxSpeed;
+    const b =
+      (Math.min(Math.max(-mouseX.current, -size), size) / radius) * maxSpeed;
 
     if (Math.abs(a) <= 0.01 && Math.abs(b) <= 0.01) return; // pause
 
@@ -123,8 +129,12 @@ export default function Skills() {
         alpha = Number((alpha > 1 ? 1 : alpha).toFixed(3));
 
         if (item?.tagRef?.current) {
-          const left = (item.x - item.tagRef.current.offsetWidth / 2).toFixed(2);
-          const top = (item.y - item.tagRef.current.offsetHeight / 2).toFixed(2);
+          const left = (item.x - item.tagRef.current.offsetWidth / 2).toFixed(
+            2
+          );
+          const top = (item.y - item.tagRef.current.offsetHeight / 2).toFixed(
+            2
+          );
 
           return {
             ...item,
@@ -151,13 +161,13 @@ export default function Skills() {
   return (
     <section
       ref={ref}
-      className='mb-24 sm:mb-40 scroll-mt-28 flex flex-col items-center w-[-webkit-fill-available] overflow-x-hidden'
-      id='skills'
+      className="mb-24 sm:mb-40 scroll-mt-28 flex flex-col items-center w-[-webkit-fill-available] overflow-x-hidden"
+      id="skills"
     >
-      <h2 className='text-3xl font-medium mb-8 text-center'>Skills</h2>
+      <h2 className="text-3xl font-medium mb-8 text-center">Skills</h2>
       <div
         ref={tagCloudRef}
-        className='tag-cloud relative'
+        className="tag-cloud relative"
         onMouseMove={ev => {
           if (tagCloudRef?.current) {
             const rect = tagCloudRef.current.getBoundingClientRect();
@@ -174,7 +184,7 @@ export default function Skills() {
           return (
             <span
               key={item.idx}
-              className='will-change-[transform,opacity,filter] absolute top-1/2 left-1/2 origin-[50%_50%] transition-all px-4 py-2 shadow-lg shadow-black/[0.03] rounded-lg bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75 text-xs'
+              className="will-change-[transform,opacity,filter] absolute top-1/2 left-1/2 origin-[50%_50%] transition-all px-4 py-2 shadow-lg shadow-black/[0.03] rounded-lg bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75 text-xs"
               ref={item.tagRef}
               style={{
                 filter: item.filter,
@@ -182,8 +192,8 @@ export default function Skills() {
                 transform: item.transform
               }}
             >
-            {item.text}
-          </span>
+              {item.text}
+            </span>
           );
         })}
       </div>

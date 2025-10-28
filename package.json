@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --ignore-path ~/.gitignore --write .",
+    "format:check": "prettier --ignore-path ~/.gitignore --check .",
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf:deploy-preview": "opennextjs-cloudflare build && opennextjs-cloudflare deploy --env preview",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
@@ -35,9 +37,12 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.5.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "postcss": "^8",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4.1.16",
     "typescript": "^5",
-    "wrangler": "^4.45.0"
+    "wrangler": "^4.45.1"
   }
 }

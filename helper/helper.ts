@@ -11,11 +11,18 @@ export const elapsedTime = (startDate: Date, endDate: Date | 'Present') => {
     months += 12;
   }
 
-  return {years, months};
+  return { years, months };
 };
 
-export const elapsedTimeString = (startDate: Date, endDate: Date | 'Present') => {
-  const {years, months} = elapsedTime(startDate, endDate);
+export const elapsedTimeString = (
+  startDate: Date,
+  endDate: Date | 'Present'
+) => {
+  const { years, months } = elapsedTime(startDate, endDate);
 
-  return (years != 0 ? years + ' yrs' : '') + ' ' + (months != 0 ? months + ' mos' : '');
+  return (
+    (years != 0 ? years + ' yrs' : '') +
+    ' ' +
+    (months != 0 ? months + ' mos' : '')
+  );
 };

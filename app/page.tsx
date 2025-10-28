@@ -8,15 +8,15 @@ import Contact from '@/components/contact';
 
 export default function Page() {
   return (
-    <div className='pt-28'>
-      <Header/>
-      <main className='flex flex-col items-center px-4'>
-        <About/>
-        <Blog/>
-        <Experience/>
-        <Skills/>
-        <Projects/>
-        <Contact/>
+    <div className="pt-28">
+      <Header />
+      <main className="flex flex-col items-center px-4">
+        <About />
+        <Blog />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Contact />
       </main>
     </div>
   );

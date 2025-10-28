@@ -1,6 +1,6 @@
 'use client';
 
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 type NavigationContextProviderType = {
   children: React.ReactNode;
@@ -13,11 +13,13 @@ type NavigationContextType = {
   setLastClicked: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const NavigationContext = createContext<NavigationContextType | null>(null);
+export const NavigationContext = createContext<NavigationContextType | null>(
+  null
+);
 
 export default function NavigationContextProvider({
-                                                    children
-                                                  }: NavigationContextProviderType) {
+  children
+}: NavigationContextProviderType) {
   const [activeHash, setActiveHash] = useState<string>('About');
   const [lastClicked, setLastClicked] = useState<number>(0);
 

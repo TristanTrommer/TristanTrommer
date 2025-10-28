@@ -1,5 +1,5 @@
-import type {Metadata, Viewport} from 'next';
-import {Inter} from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import NavigationContextProvider from '@/context/NavigationContext';
 import ThemeContextProvider from '@/context/ThemeContext';
@@ -15,12 +15,13 @@ export const metadata: Metadata = {
     template: '%s | Tristan Trommer',
     default: 'Tristan Trommer'
   },
-  description: 'Hello, I\'m Tristan Trommer. I\'m a passionate Software Engineer.',
+  description:
+    "Hello, I'm Tristan Trommer. I'm a passionate Software Engineer.",
   generator: 'Tristan Trommer',
   applicationName: 'Tristan Trommer',
   referrer: 'origin-when-cross-origin',
   keywords: ['Tristan Trommer', 'Tristan', 'Trommer'],
-  authors: [{name: 'Tristan Trommer', url: 'https://tristantrommer.com'}],
+  authors: [{ name: 'Tristan Trommer', url: 'https://tristantrommer.com' }],
   creator: 'Tristan Trommer',
   publisher: 'Tristan Trommer',
   formatDetection: {
@@ -33,7 +34,8 @@ export const metadata: Metadata = {
       template: '%s | Tristan Trommer',
       default: 'Tristan Trommer'
     },
-    description: 'Hello, I\'m Tristan Trommer. I\'m a passionate Software Engineer.',
+    description:
+      "Hello, I'm Tristan Trommer. I'm a passionate Software Engineer.",
     url: 'https://tristantrommer.com',
     siteName: 'Tristan Trommer',
     images: [
@@ -69,7 +71,7 @@ export const metadata: Metadata = {
         rel: 'icon',
         type: 'image/svg+xml',
         url: '/favicon.svg'
-      },
+      }
     ]
   },
   manifest: '/site.webmanifest?v=1'
@@ -82,20 +84,16 @@ export const viewport: Viewport = {
   colorScheme: 'light dark'
 };
 
-export default function Layout({
-                                 children
-                               }: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className='!scroll-smooth'>
-    <body className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50`}>
-    <ThemeContextProvider>
-      <NavigationContextProvider>
-        {children}
-      </NavigationContextProvider>
-    </ThemeContextProvider>
-    </body>
+    <html lang="en" className="!scroll-smooth">
+      <body
+        className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50`}
+      >
+        <ThemeContextProvider>
+          <NavigationContextProvider>{children}</NavigationContextProvider>
+        </ThemeContextProvider>
+      </body>
     </html>
   );
 }

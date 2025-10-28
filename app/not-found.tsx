@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Not Found',
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className='flex flex-col justify-center items-center min-h-screen min-w-full p-4'>
-      <h1 className='font-medium text-2xl sm:text-4xl'>Not Found</h1>
+    <div className="flex flex-col justify-center items-center min-h-screen min-w-full p-4">
+      <h1 className="font-medium text-2xl sm:text-4xl">Not Found</h1>
     </div>
   );
 }

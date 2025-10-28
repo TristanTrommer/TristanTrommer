@@ -1,9 +1,9 @@
-import {useEffect, useRef} from 'react';
-import {useNavigationContext} from '@/context/NavigationContext';
+import { useEffect, useRef } from 'react';
+import { useNavigationContext } from '@/context/NavigationContext';
 
 export function useActiveHash(activeHash: string) {
   const ref = useRef<HTMLElement | null>(null);
-  const {setActiveHash, lastClicked} = useNavigationContext();
+  const { setActiveHash, lastClicked } = useNavigationContext();
 
   useEffect(() => {
     const element = ref.current;
@@ -16,7 +16,7 @@ export function useActiveHash(activeHash: string) {
         }
       },
       {
-        threshold: 0.2,
+        threshold: 0.2
       }
     );
 
@@ -28,6 +28,6 @@ export function useActiveHash(activeHash: string) {
   }, [activeHash, lastClicked, setActiveHash]);
 
   return {
-    ref,
+    ref
   };
 }
