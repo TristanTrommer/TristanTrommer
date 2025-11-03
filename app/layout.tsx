@@ -10,7 +10,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tristantrommer.com'),
   title: {
     template: '%s | Tristan Trommer',
     default: 'Tristan Trommer'
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
   applicationName: 'Tristan Trommer',
   referrer: 'origin-when-cross-origin',
   keywords: ['Tristan Trommer', 'Tristan', 'Trommer'],
-  authors: [{ name: 'Tristan Trommer', url: 'https://tristantrommer.com' }],
+  authors: [{ name: 'Tristan Trommer', url: `${process.env.NEXT_PUBLIC_URL}` }],
   creator: 'Tristan Trommer',
   publisher: 'Tristan Trommer',
   formatDetection: {
@@ -36,16 +35,16 @@ export const metadata: Metadata = {
     },
     description:
       "Hello, I'm Tristan Trommer. I'm a passionate Software Engineer.",
-    url: 'https://tristantrommer.com',
+    url: `${process.env.NEXT_PUBLIC_URL}`,
     siteName: 'Tristan Trommer',
     images: [
       {
-        url: 'https://tristantrommer.com/opengraph-1200x600.webp?v=1',
+        url: `${process.env.NEXT_PUBLIC_URL}/opengraph-1200x600.webp?v=1`,
         width: 1200,
         height: 600
       },
       {
-        url: 'https://tristantrommer.com/opengraph-800x600.webp?v=1',
+        url: `${process.env.NEXT_PUBLIC_URL}/opengraph-800x600.webp?v=1`,
         width: 800,
         height: 600
       }
@@ -58,23 +57,23 @@ export const metadata: Metadata = {
     follow: true
   },
   icons: {
-    shortcut: '/favicon.ico?v=1',
-    apple: '/apple-touch-icon.png?v=1',
+    shortcut: `${process.env.NEXT_PUBLIC_URL}/favicon.ico?v=1`,
+    apple: `${process.env.NEXT_PUBLIC_URL}/apple-touch-icon.png?v=1`,
     other: [
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '96x96',
-        url: '/favicon-96x96.png'
+        url: `${process.env.NEXT_PUBLIC_URL}/favicon-96x96.png`
       },
       {
         rel: 'icon',
         type: 'image/svg+xml',
-        url: '/favicon.svg'
+        url: `${process.env.NEXT_PUBLIC_URL}/favicon.svg`
       }
     ]
   },
-  manifest: '/site.webmanifest?v=1'
+  manifest: `${process.env.NEXT_PUBLIC_URL}/site.webmanifest?v=1`
 };
 
 export const viewport: Viewport = {
