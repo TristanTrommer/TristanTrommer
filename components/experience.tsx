@@ -10,6 +10,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import { useThemeContext } from '@/context/ThemeContext';
 import Image, { StaticImageData } from 'next/image';
+import eventassetsLogo from '@/public/images/experience/eventassets.webp';
 import zalandoLogo from '@/public/images/experience/zalando.webp';
 import vesselxLogo from '@/public/images/experience/vesselx.webp';
 import { elapsedTimeString } from '@/helper/helper';
@@ -29,6 +30,21 @@ export default function Experience() {
     startDate: Date;
     endDate: Date | 'Present';
   }> = [
+    {
+      title: 'Founder',
+      employmentType: 'Self-employed',
+      company: 'EventAssets',
+      companyLogo: eventassetsLogo,
+      location: 'Berlin, Berlin, Germany',
+      locationType: 'Remote',
+      description: (
+        <ul className="list-disc list-inside">
+          <li>Building a cloud-native event management platform.</li>
+        </ul>
+      ),
+      startDate: new Date(2025, 9),
+      endDate: 'Present'
+    },
     {
       title: 'Software Engineer',
       employmentType: 'Full-time',
