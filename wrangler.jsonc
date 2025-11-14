@@ -4,6 +4,9 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-03-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "vars": {
+    "NEXT_PUBLIC_ENVIRONMENT": "production"
+  },
   "observability": {
     "logs": {
       "enabled": true,
@@ -39,6 +42,9 @@
   },
   "env": {
     "preview": {
+      "vars": {
+        "NEXT_PUBLIC_ENVIRONMENT": "preview"
+      },
       "observability": {
         "logs": {
           "enabled": true,
