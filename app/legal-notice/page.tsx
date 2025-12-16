@@ -6,8 +6,7 @@ export const metadata: Metadata = {
   title: 'Legal Notice',
   description: 'Legal Notice',
   robots: {
-    index: false,
-    follow: false
+    index: false
   }
 };
 
@@ -22,12 +21,16 @@ export default function Page() {
       >
         <h1 className="text-4xl font-medium mb-8 text-center">Legal Notice</h1>
         <p>
-          <h3 className="text-3xl font-medium mb-4">Provider</h3>
+          <h3 className="text-3xl font-medium mb-4">
+            Information pursuant to Section 5 DDG
+          </h3>
           Tristan Trommer
           <br />
-          Emsdettener Str. 10, c/o Postflex #3424
+          Emsdettener Str. 10
           <br />
-          48268 Greven, North Rhine-Westphalia
+          c/o Postflex #3424
+          <br />
+          48268 Greven
           <br />
           Germany
           <br />
@@ -44,52 +47,70 @@ export default function Page() {
           <br />
           <br />
           <h3 className="text-3xl font-medium mb-4">
-            Person responsible for content according to § 18 Abs. 2 MStV
+            Responsible for the content in accordance with § 18 para. 2 MStV
           </h3>
           Tristan Trommer
           <br />
-          Emsdettener Str. 10, c/o Postflex #3424
+          Emsdettener Str. 10
           <br />
-          Greven, North Rhine-Westphalia 48268
+          c/o Postflex #3424
+          <br />
+          48268 Greven
           <br />
           Germany
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">EU dispute resolution</h3>
-          The European Commission provides a platform for online dispute
-          resolution (OS):{' '}
-          <Link href="https://ec.europa.eu/consumers/odr" target="_blank">
-            https://ec.europa.eu/consumers/odr
-          </Link>
+          <h3 className="text-3xl font-medium mb-4">
+            Consumer dispute resolution / Universal arbitration board
+          </h3>
+          We do not participate in dispute resolution proceedings before a
+          consumer arbitration board and are not obliged to do so.
           <br />
           <br />
           <h3 className="text-3xl font-medium mb-4">Disclaimer</h3>
-          We are responsible for the content of our website in accordance with
-          the provisions of general law. All content is created with due care
-          and to the best of our knowledge. Insofar as we refer to third-party
-          websites on our Internet pages by means of hyperlinks, we cannot
-          assume any liability for the continued topicality, correctness and
-          completeness of the linked content, as this content is outside our
-          area of responsibility and we have no influence on its future design.
-          Should you consider any content to be in breach of applicable law or
-          inappropriate, please let us know. The legal information on this page
-          as well as all questions and disputes in connection with the design of
-          this website are subject to the laws of the Federal Republic of
-          Germany.
+          <h3 className="text-2xl font-medium mb-4">Liability for content</h3>
+          The content of our pages has been compiled with the utmost care.
+          However, we cannot guarantee that the content is accurate, complete,
+          or up to date. As a service provider, we are responsible for our own
+          content on these pages in accordance with § 7 para. 1 DDG (German
+          Telemedia Act) under general law. However, according to §§ 8 to 10
+          DDG, we as a service provider are not obliged to monitor transmitted
+          or stored third-party information or to investigate circumstances that
+          indicate illegal activity. Obligations to remove or block the use of
+          information in accordance with general laws remain unaffected by this.
+          However, liability in this regard is only possible from the time we
+          become aware of a specific legal violation. If we become aware of such
+          legal violations, we will remove this content immediately.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Copyright notice</h3>
-          The texts, images, photos, videos or graphics available on our website
-          are generally subject to copyright protection. Any unauthorized use
-          (especially copying, editing or distribution) of this
-          copyright-protected content is therefore prohibited. If you intend to
-          use this content or parts thereof, please contact us in advance using
-          the details above. If we are not the owner of the required copyrighted
-          rights of use ourselves, we will endeavor to arrange contact with the
-          entitled party.
+          <h3 className="text-2xl font-medium mb-4">Liability for links</h3>
+          Our website contains links to external third-party websites over whose
+          content we have no influence. Therefore, we cannot accept any
+          liability for this external content. The respective provider or
+          operator of the linked pages is always responsible for their content.
+          The linked pages were checked for possible legal violations at the
+          time of linking. No illegal content was found at the time of linking.
+          However, permanent monitoring of the content of the linked pages is
+          not reasonable without concrete evidence of a violation of the law. If
+          we become aware of any violations of the law, we will remove such
+          links immediately.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Social media profiles</h3>
+          <h3 className="text-2xl font-medium mb-4">Copyright</h3>
+          The content and works on these pages created by the site operators are
+          subject to German copyright law. The reproduction, editing,
+          distribution, and any kind of use outside the limits of copyright law
+          require the written consent of the respective author or creator.
+          Downloads and copies of this site are only permitted for private,
+          non-commercial use. Insofar as the content on this site was not
+          created by the operator, the copyrights of third parties are
+          respected. In particular, third-party content is identified as such.
+          Should you nevertheless become aware of a copyright infringement,
+          please inform us accordingly. If we become aware of any infringements,
+          we will remove such content immediately.
+          <br />
+          <br />
+          <h3 className="text-2xl font-medium mb-4">Social media profiles</h3>
           This legal notice also applies to the following social media profiles:
           <br />
           LinkedIn:{' '}

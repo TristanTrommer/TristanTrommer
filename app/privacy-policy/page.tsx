@@ -6,8 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy',
   robots: {
-    index: false,
-    follow: false
+    index: false
   }
 };
 
@@ -72,9 +71,11 @@ export default function Page() {
           <br />
           Tristan Trommer
           <br />
-          Emsdettener Str. 10, c/o Postflex #3424
+          Emsdettener Str. 10
           <br />
-          48268 Greven, North Rhine-Westphalia
+          c/o Postflex #3424
+          <br />
+          48268 Greven
           <br />
           Germany
           <br />
