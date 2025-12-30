@@ -16,14 +16,14 @@ export default function Page() {
   return (
     <main className="flex flex-col items-center px-4">
       <section
-        className="mt-24 mb-24 w-full max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+        className="mt-24 mb-24 w-full max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
         id="about"
       >
-        <h1 className="text-4xl font-medium mb-8 text-center">
+        <h1 className="mb-8 text-center text-4xl font-medium">
           Privacy Policy
         </h1>
         <p>
-          <h3 className="text-3xl font-medium mb-4">Introduction</h3>
+          <h3 className="mb-4 text-3xl font-medium">Introduction</h3>
           This website is operated by: Tristan Trommer
           <br />
           <br />
@@ -35,8 +35,8 @@ export default function Page() {
           really understand what happens to your data.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">General Information</h3>
-          <h4 className="text-2xl font-medium mb-4">
+          <h3 className="mb-4 text-3xl font-medium">General Information</h3>
+          <h4 className="mb-4 text-2xl font-medium">
             Processing of personal data and other terms
           </h4>
           Data protection applies to the processing of personal data. Personal
@@ -50,7 +50,7 @@ export default function Page() {
           and other legal definitions can be found in Art. 4 GDPR.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Applicable regulations/laws - GDPR, BDSG and TDDDG
           </h4>
           The scope of data protection is regulated by laws. In this case, these
@@ -60,7 +60,7 @@ export default function Page() {
           far as the use of cookies is concerned.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">The responsible</h4>
+          <h4 className="mb-4 text-2xl font-medium">The responsible</h4>
           The controller within the meaning of the GDPR is responsible for data
           processing on this website. This is the natural or legal person who
           alone or jointly with others determines the purposes and means of the
@@ -85,7 +85,7 @@ export default function Page() {
           >{`${encodedEmail[0]}@${encodedEmail[1]}`}</Link>
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             This is how data is basically processed on this website
           </h4>
           As we have already established, there is data (e.g. IP address) that
@@ -96,7 +96,7 @@ export default function Page() {
           find more detailed information below.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Your rights</h4>
+          <h4 className="mb-4 text-2xl font-medium">Your rights</h4>
           The GDPR provides you with comprehensive rights. These include, for
           example, free information about the origin, recipient and purpose of
           your stored personal data. You can also request the rectification,
@@ -106,7 +106,7 @@ export default function Page() {
           and how to exercise them in the last section of this Privacy Policy.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Data protection - Our view
           </h4>
           Data protection is more than just a chore for us! Personal data is of
@@ -118,7 +118,7 @@ export default function Page() {
           course, treat them confidentially.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Disclosure and deletion</h4>
+          <h4 className="mb-4 text-2xl font-medium">Disclosure and deletion</h4>
           The transfer and deletion of data are also important and sensitive
           topics. Therefore, we would like to briefly inform you in advance
           about our general approach to this. A transfer of data only takes
@@ -133,7 +133,7 @@ export default function Page() {
           specific questions.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Hosting</h4>
+          <h4 className="mb-4 text-2xl font-medium">Hosting</h4>
           This website is hosted externally. The personal data collected on this
           website is stored on the host&apos;s servers. This includes the
           automatically collected and stored log files (see below for more
@@ -158,7 +158,7 @@ export default function Page() {
           </Link>
           )<br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Legal basis</h4>
+          <h4 className="mb-4 text-2xl font-medium">Legal basis</h4>
           The processing of personal data always requires a legal basis. The
           GDPR provides for the following possibilities in Art. 6 (1) Sentence
           1:
@@ -199,7 +199,7 @@ export default function Page() {
           basis for the respective processing.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">
+          <h3 className="mb-4 text-3xl font-medium">
             What happens on our website
           </h3>
           By visiting our website, we process personal data about you. To
@@ -211,7 +211,7 @@ export default function Page() {
           what purpose this is done and on what legal basis.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Data collection when calling up the website
           </h4>
           By calling up the website, information is automatically stored in
@@ -249,7 +249,7 @@ export default function Page() {
           consolidation with other data does not take place.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Cookies</h4>
+          <h4 className="mb-4 text-2xl font-medium">Cookies</h4>
           This website uses so-called cookies. This is a data record,
           information that is stored in the browser of your terminal device and
           is related to our website. By setting cookies, the navigation of the
@@ -262,7 +262,7 @@ export default function Page() {
           lit. b, c and/or f GDPR.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Data processing through user input
           </h4>
           When you contact us by email, we process your email address and any
@@ -286,7 +286,7 @@ export default function Page() {
           parties does not take place.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Analysis and tracking tools
           </h4>
           We integrate the Cloudflare Web Analytics service on our website. This
@@ -319,7 +319,7 @@ export default function Page() {
           </Link>
           .<br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Third-party content</h4>
+          <h4 className="mb-4 text-2xl font-medium">Third-party content</h4>
           We use the Cloudflare Turnstile service. This service of Cloudflare,
           Inc., 101 Townsend St., San Francisco, California 94107, USA (
           <Link
@@ -350,13 +350,13 @@ export default function Page() {
           </Link>
           .<br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Your rights</h3>
+          <h3 className="mb-4 text-3xl font-medium">Your rights</h3>
           Finally, we would like to inform you in detail about your rights and
           how you will be informed about changes in data protection
           requirements.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to information according to Art. 15 GDPR
           </h4>
           You can request information about whether your personal data is being
@@ -365,14 +365,14 @@ export default function Page() {
           in Art. 15 (1) a) to h) GDPR.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to rectification according to Art. 16 GDPR
           </h4>
           This right includes the correction of inaccurate data and the
           completion of incomplete personal data.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to deletion according to Art. 17 GDPR
           </h4>
           This so-called &apos;right to be forgotten&apos; gives you the right,
@@ -386,14 +386,14 @@ export default function Page() {
           to bring about a general erasure of the data.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to restriction of processing according to Art. 18 GDPR
           </h4>
           This right is subject to the conditions set out in Art. 18(1)(a) to
           (d).
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to data portability according to Art. 20 GDPR
           </h4>
           Here, the basic right to receive one&apos;s own data in a common form
@@ -403,7 +403,7 @@ export default function Page() {
           this is technically feasible.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right of objection according to Art. 21 GDPR
           </h4>
           In principle, you can object to the processing of your personal data.
@@ -412,7 +412,7 @@ export default function Page() {
           processing relates to direct marketing and/or profiling.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right to &apos;decision in individual cases&apos; according to Art.
             22 GDPR
           </h4>
@@ -423,7 +423,7 @@ export default function Page() {
           Art. 22 (2) and (4) GDPR.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">
+          <h4 className="mb-4 text-2xl font-medium">
             Right of appeal according to Art. 77 GDPR
           </h4>
           You also have the right to lodge a complaint with a data protection
@@ -431,7 +431,7 @@ export default function Page() {
           data relating to you infringes this Regulation.
           <br />
           <br />
-          <h4 className="text-2xl font-medium mb-4">Other rights</h4>
+          <h4 className="mb-4 text-2xl font-medium">Other rights</h4>
           The GDPR contains comprehensive rights to inform third parties about
           whether or how you have asserted rights under Art. 16, 17, 18 GDPR.
           However, this only applies insofar as this is possible or feasible
@@ -444,7 +444,7 @@ export default function Page() {
           just described.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Final words</h3>
+          <h3 className="mb-4 text-3xl font-medium">Final words</h3>
           The current status of this Privacy Policy is 01.01.2025. From time to
           time it is necessary to adapt the content of the Privacy Policy in
           order to react to actual and legal changes. We therefore reserve the

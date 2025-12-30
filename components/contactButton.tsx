@@ -13,7 +13,7 @@ export default function ContactButton({
   return (
     <button
       type="submit"
-      className={`w-full px-7 py-3 ${(sent && error && 'bg-red-800 dark:bg-red-800 text-gray-50') || (sent && 'bg-green-800 dark:bg-green-800 text-gray-50') || (!sent && 'bg-white dark:bg-gray-950')} bg-opacity-80 shadow-lg shadow-black/[0.03] flex justify-center items-center gap-2 rounded-lg transition cursor-pointer disabled:cursor-not-allowed dark:bg-opacity-75`}
+      className={`w-full px-7 py-3 ${(sent && error && 'bg-red-800 text-gray-50 dark:bg-red-800') || (sent && 'bg-green-800 text-gray-50 dark:bg-green-800') || (!sent && 'bg-white dark:bg-gray-950')} bg-opacity-80 dark:bg-opacity-75 flex cursor-pointer items-center justify-center gap-2 rounded-lg shadow-lg shadow-black/[0.03] transition disabled:cursor-not-allowed`}
       disabled={sent || pending}
     >
       {pending ? (
@@ -21,7 +21,7 @@ export default function ContactButton({
           <span>Sending message...</span>
           <svg
             aria-hidden="true"
-            className="w-4 h-4 animate-spin fill-black"
+            className="h-4 w-4 animate-spin fill-black"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

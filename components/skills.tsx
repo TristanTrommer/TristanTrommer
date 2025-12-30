@@ -161,10 +161,10 @@ export default function Skills() {
   return (
     <section
       ref={ref}
-      className="mb-24 sm:mb-40 scroll-mt-28 flex flex-col items-center w-[-webkit-fill-available] overflow-x-hidden"
+      className="mb-24 flex w-[-webkit-fill-available] scroll-mt-28 flex-col items-center overflow-x-hidden sm:mb-40"
       id="skills"
     >
-      <h2 className="text-3xl font-medium mb-8 text-center">Skills</h2>
+      <h2 className="mb-8 text-center text-3xl font-medium">Skills</h2>
       <div
         ref={tagCloudRef}
         className="tag-cloud relative"
@@ -184,7 +184,7 @@ export default function Skills() {
           return (
             <span
               key={item.idx}
-              className="will-change-[transform,opacity,filter] absolute top-1/2 left-1/2 origin-[50%_50%] transition-all px-4 py-2 shadow-lg shadow-black/[0.03] rounded-lg bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75 text-xs"
+              className="bg-opacity-80 dark:bg-opacity-75 absolute top-1/2 left-1/2 origin-[50%_50%] rounded-lg bg-white px-4 py-2 text-xs shadow-lg shadow-black/[0.03] transition-all will-change-[transform,opacity,filter] dark:bg-gray-950"
               ref={item.tagRef}
               style={{
                 filter: item.filter,

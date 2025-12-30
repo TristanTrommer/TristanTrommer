@@ -21,7 +21,7 @@ export default function About() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      className="mb-24 w-full max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
       id="about"
     >
       <div className="flex items-center justify-center">
@@ -41,14 +41,14 @@ export default function About() {
               height="96"
               priority={true}
               placeholder="blur"
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white dark:border-gray-950 border-opacity-75 shadow-lg shadow-black/[0.03]"
+              className="border-opacity-75 h-24 w-24 rounded-full border-[0.35rem] border-white object-cover shadow-lg shadow-black/[0.03] dark:border-gray-950"
             />
           </motion.div>
         </div>
       </div>
 
       <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        className="mt-4 mb-10 px-4 text-2xl !leading-[1.5] font-medium sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -120,7 +120,7 @@ export default function About() {
             1000
           ]}
           wrapper="span"
-          className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-[#66a6ff] to-[#89f7fe]"
+          className="bg-gradient-to-br from-[#66a6ff] to-[#89f7fe] bg-clip-text font-bold text-transparent"
           speed={50}
           repeat={Infinity}
           cursor={false}
@@ -129,13 +129,13 @@ export default function About() {
       </motion.h1>
 
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 mb-10 sm:mb-0"
+        className="mb-10 flex flex-col items-center justify-center gap-2 px-4 sm:mb-0 sm:flex-row"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <Link
           href="#contact"
-          className="px-7 py-3 border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] flex items-center gap-2 rounded-full text-gray-500 hover:text-gray-900 transition dark:hover:text-gray-50 cursor-pointer dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+          className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 flex cursor-pointer items-center gap-2 rounded-full border border-white bg-white px-7 py-3 text-gray-500 shadow-lg shadow-black/[0.03] transition hover:text-gray-900 dark:border-black/40 dark:bg-gray-950 dark:hover:text-gray-50"
           onClick={() => {
             setActiveHash('Contact');
             setLastClicked(Date.now());
@@ -145,7 +145,7 @@ export default function About() {
         </Link>
         <div className="flex items-center justify-center gap-2">
           <a
-            className="p-4 border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] flex items-center gap-2 text-[1.35rem] rounded-full text-gray-500 hover:text-gray-900 transition dark:hover:text-gray-50 cursor-pointer dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+            className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 flex cursor-pointer items-center gap-2 rounded-full border border-white bg-white p-4 text-[1.35rem] text-gray-500 shadow-lg shadow-black/[0.03] transition hover:text-gray-900 dark:border-black/40 dark:bg-gray-950 dark:hover:text-gray-50"
             href="https://linkedin.com/in/tristantrommer"
             target="_blank"
             title="LinkedIn"
@@ -153,7 +153,7 @@ export default function About() {
             <PiLinkedinLogoLight />
           </a>
           <a
-            className="p-4 border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] flex items-center gap-2 text-[1.35rem] rounded-full text-gray-500 hover:text-gray-900 transition dark:hover:text-gray-50 cursor-pointer dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+            className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 flex cursor-pointer items-center gap-2 rounded-full border border-white bg-white p-4 text-[1.35rem] text-gray-500 shadow-lg shadow-black/[0.03] transition hover:text-gray-900 dark:border-black/40 dark:bg-gray-950 dark:hover:text-gray-50"
             href="https://medium.com/@tristantrommer"
             target="_blank"
             title="Medium"
@@ -161,7 +161,7 @@ export default function About() {
             <PiMediumLogoLight />
           </a>
           <a
-            className="p-4 border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] flex items-center gap-2 text-[1.35rem] rounded-full text-gray-500 hover:text-gray-900 transition dark:hover:text-gray-50 cursor-pointer dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+            className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 flex cursor-pointer items-center gap-2 rounded-full border border-white bg-white p-4 text-[1.35rem] text-gray-500 shadow-lg shadow-black/[0.03] transition hover:text-gray-900 dark:border-black/40 dark:bg-gray-950 dark:hover:text-gray-50"
             href="https://github.com/tristantrommer"
             target="_blank"
             title="GitHub"
@@ -172,7 +172,7 @@ export default function About() {
       </motion.div>
 
       <div className="flex items-center justify-center">
-        <div className="bg-gray-200 my-24 h-16 w-1 rounded-full hidden sm:block dark:bg-opacity-20"></div>
+        <div className="dark:bg-opacity-20 my-24 hidden h-16 w-1 rounded-full bg-gray-200 sm:block"></div>
       </div>
 
       <p className="mb-4">

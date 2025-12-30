@@ -19,19 +19,19 @@ export default function Contact() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      className="mb-24 w-full max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
       id="contact"
     >
-      <h2 className="text-3xl font-medium mb-8 text-center">Contact</h2>
+      <h2 className="mb-8 text-center text-3xl font-medium">Contact</h2>
       <p>Use the contact form or send me an email.</p>
-      <p className="flex justify-center items-center gap-2">
+      <p className="flex items-center justify-center gap-2">
         <Link href={`mailto:${encodedEmail[0]}@${encodedEmail[1]}`}>
           {`${encodedEmail[0]}@${encodedEmail[1]}`}
         </Link>
       </p>
 
       <form
-        className="my-10 flex flex-col w-full sm:w-[45rem]"
+        className="my-10 flex w-full flex-col sm:w-[45rem]"
         action={async formData => {
           const { error } = await email(formData);
 
@@ -42,26 +42,26 @@ export default function Contact() {
         }}
       >
         <input
-          className="w-full sm:w-[45rem] text-gray-900 dark:text-gray-50 outline-none h-14 mb-4 px-4 shadow-lg shadow-black/[0.03] rounded-lg bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75"
+          className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/[0.03] outline-none sm:w-[45rem] dark:bg-gray-950 dark:text-gray-50"
           name="email"
           type="email"
           required
           placeholder="Email"
         />
         <input
-          className="w-full sm:w-[45rem] text-gray-900 dark:text-gray-50 outline-none h-14 mb-4 px-4 shadow-lg shadow-black/[0.03] rounded-lg bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75"
+          className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/[0.03] outline-none sm:w-[45rem] dark:bg-gray-950 dark:text-gray-50"
           name="name"
           type="text"
           required
           placeholder="Name"
         />
         <textarea
-          className="w-full sm:w-[45rem] text-gray-900 dark:text-gray-50 outline-none h-52 mb-4 shadow-lg shadow-black/[0.03] rounded-lg p-4 bg-white bg-opacity-80 dark:bg-gray-950 dark:bg-opacity-75"
+          className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-52 w-full rounded-lg bg-white p-4 text-gray-900 shadow-lg shadow-black/[0.03] outline-none sm:w-[45rem] dark:bg-gray-950 dark:text-gray-50"
           name="message"
           placeholder="Message"
           required
         />
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Turnstile
             className="mb-4 w-full"
             sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
@@ -73,7 +73,7 @@ export default function Contact() {
         <ContactButton sent={sent} error={error} />
       </form>
 
-      <p className="flex justify-center items-center gap-4 text-xs">
+      <p className="flex items-center justify-center gap-4 text-xs">
         <Link href="/legal-notice" target="_blank">
           Legal Notice
         </Link>

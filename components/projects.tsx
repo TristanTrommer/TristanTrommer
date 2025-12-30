@@ -62,9 +62,9 @@ export default function Projects() {
     };
   }) => {
     return (
-      <div className="py-6 px-8">
-        <h3 className="font-medium text-xl mb-2">{item.title}</h3>
-        <p className="text-sm mb-4">
+      <div className="px-8 py-6">
+        <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
+        <p className="mb-4 text-sm">
           {`${item.startDate.toLocaleDateString('en', {
             year: 'numeric',
             month: 'short'
@@ -79,7 +79,7 @@ export default function Projects() {
         </p>
         <p>{item.description}</p>
         {(item.git || item.url) && (
-          <div className="flex gap-2 mt-4 text-xl">
+          <div className="mt-4 flex gap-2 text-xl">
             {item.git && (
               <a href={item.git} title="Git" target="_blank">
                 <PiGitBranchLight />
@@ -99,17 +99,17 @@ export default function Projects() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-[45rem] leading-8 sm:mb-40 scroll-mt-28"
+      className="mb-24 w-full max-w-[45rem] scroll-mt-28 leading-8 sm:mb-40"
       id="projects"
     >
-      <h2 className="text-3xl font-medium mb-8 text-center">Projects</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <h2 className="mb-8 text-center text-3xl font-medium">Projects</h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projectsData
           .filter(item => item.primary)
           .map((item, index) => (
             <div
               key={index}
-              className="rounded-lg bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+              className="bg-opacity-80 dark:bg-opacity-75 rounded-lg bg-white shadow-lg shadow-black/[0.03] dark:border-black/40 dark:bg-gray-950"
             >
               <div>
                 <Image
@@ -127,13 +127,13 @@ export default function Projects() {
             </div>
           ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projectsData
           .filter(item => !item.primary)
           .map((item, index) => (
             <div
               key={index}
-              className="relative max-w-xl mx-auto group rounded-lg bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
+              className="group bg-opacity-80 dark:bg-opacity-75 relative mx-auto max-w-xl rounded-lg bg-white shadow-lg shadow-black/[0.03] dark:border-black/40 dark:bg-gray-950"
             >
               <Image
                 src={item.image.src}
@@ -143,8 +143,8 @@ export default function Projects() {
                 placeholder="blur"
                 className="w-full rounded-lg"
               />
-              <div className="absolute inset-0 bg-black opacity-0 group-focus:opacity-60 group-hover:opacity-60 transition-opacity duration-300 rounded-md"></div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 focus:opacity-100 group-hover:opacity-100 transition-opacity duration-300 text-white">
+              <div className="absolute inset-0 rounded-md bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-60 group-focus:opacity-60"></div>
+              <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 focus:opacity-100">
                 <Data item={item} />
               </div>
             </div>

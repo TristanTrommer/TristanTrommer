@@ -16,12 +16,12 @@ export default function Page() {
   return (
     <main className="flex flex-col items-center px-4">
       <section
-        className="mt-24 mb-24 w-full max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+        className="mt-24 mb-24 w-full max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
         id="about"
       >
-        <h1 className="text-4xl font-medium mb-8 text-center">Legal Notice</h1>
+        <h1 className="mb-8 text-center text-4xl font-medium">Legal Notice</h1>
         <p>
-          <h3 className="text-3xl font-medium mb-4">
+          <h3 className="mb-4 text-3xl font-medium">
             Information pursuant to Section 5 DDG
           </h3>
           Tristan Trommer
@@ -35,18 +35,18 @@ export default function Page() {
           Germany
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Represented by</h3>
+          <h3 className="mb-4 text-3xl font-medium">Represented by</h3>
           Tristan Trommer
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Contact</h3>
+          <h3 className="mb-4 text-3xl font-medium">Contact</h3>
           Email:{' '}
           <Link
             href={`mailto:${encodedEmail[0]}@${encodedEmail[1]}`}
           >{`${encodedEmail[0]}@${encodedEmail[1]}`}</Link>
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">
+          <h3 className="mb-4 text-3xl font-medium">
             Responsible for the content in accordance with § 18 para. 2 MStV
           </h3>
           Tristan Trommer
@@ -60,15 +60,15 @@ export default function Page() {
           Germany
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">
+          <h3 className="mb-4 text-3xl font-medium">
             Consumer dispute resolution / Universal arbitration board
           </h3>
           We do not participate in dispute resolution proceedings before a
           consumer arbitration board and are not obliged to do so.
           <br />
           <br />
-          <h3 className="text-3xl font-medium mb-4">Disclaimer</h3>
-          <h3 className="text-2xl font-medium mb-4">Liability for content</h3>
+          <h3 className="mb-4 text-3xl font-medium">Disclaimer</h3>
+          <h3 className="mb-4 text-2xl font-medium">Liability for content</h3>
           The content of our pages has been compiled with the utmost care.
           However, we cannot guarantee that the content is accurate, complete,
           or up to date. As a service provider, we are responsible for our own
@@ -83,7 +83,7 @@ export default function Page() {
           legal violations, we will remove this content immediately.
           <br />
           <br />
-          <h3 className="text-2xl font-medium mb-4">Liability for links</h3>
+          <h3 className="mb-4 text-2xl font-medium">Liability for links</h3>
           Our website contains links to external third-party websites over whose
           content we have no influence. Therefore, we cannot accept any
           liability for this external content. The respective provider or
@@ -96,7 +96,7 @@ export default function Page() {
           links immediately.
           <br />
           <br />
-          <h3 className="text-2xl font-medium mb-4">Copyright</h3>
+          <h3 className="mb-4 text-2xl font-medium">Copyright</h3>
           The content and works on these pages created by the site operators are
           subject to German copyright law. The reproduction, editing,
           distribution, and any kind of use outside the limits of copyright law
@@ -110,7 +110,7 @@ export default function Page() {
           we will remove such content immediately.
           <br />
           <br />
-          <h3 className="text-2xl font-medium mb-4">Social media profiles</h3>
+          <h3 className="mb-4 text-2xl font-medium">Social media profiles</h3>
           This legal notice also applies to the following social media profiles:
           <br />
           LinkedIn:{' '}

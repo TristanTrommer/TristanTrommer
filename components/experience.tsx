@@ -38,7 +38,7 @@ export default function Experience() {
       location: 'Berlin, Berlin, Germany',
       locationType: 'Remote',
       description: (
-        <ul className="list-disc list-inside">
+        <ul className="list-inside list-disc">
           <li>Building a cloud-native event management platform.</li>
         </ul>
       ),
@@ -53,7 +53,7 @@ export default function Experience() {
       location: 'Berlin, Berlin, Germany',
       locationType: 'Hybrid',
       description: (
-        <ul className="list-disc list-inside">
+        <ul className="list-inside list-disc">
           <li>
             Aim to drive greater technical ownership by initiating and leading
             high-impact projects, mentoring junior engineers, and promoting best
@@ -73,7 +73,7 @@ export default function Experience() {
       location: 'Berlin, Berlin, Germany',
       locationType: 'Hybrid',
       description: (
-        <ul className="list-disc list-inside">
+        <ul className="list-inside list-disc">
           <li>
             Proactively expanded domain knowledge across multiple Zalando
             services, increasing team capacity and reducing reliance on senior
@@ -110,7 +110,7 @@ export default function Experience() {
       location: 'Berlin, Berlin, Germany',
       locationType: 'Hybrid',
       description: (
-        <ul className="list-disc list-inside">
+        <ul className="list-inside list-disc">
           <li>
             Developed and maintained backend features, APIs, and tools in close
             collaboration with senior engineers, following best practices in
@@ -148,7 +148,7 @@ export default function Experience() {
       location: 'İzmir, İzmir, Turkey',
       locationType: 'Hybrid',
       description: (
-        <ul className="list-disc list-inside">
+        <ul className="list-inside list-disc">
           <li>
             Engineered a robust, serverless infrastructure using Google Cloud
             Platform and PostgreSQL in support of an autonomous water surface
@@ -179,8 +179,8 @@ export default function Experience() {
   ];
 
   return (
-    <section ref={ref} className="mb-24 sm:mb-40 scroll-mt-28" id="experience">
-      <h2 className="text-3xl font-medium mb-8 text-center">Experience</h2>
+    <section ref={ref} className="mb-24 scroll-mt-28 sm:mb-40" id="experience">
+      <h2 className="mb-8 text-center text-3xl font-medium">Experience</h2>
       <VerticalTimeline
         lineColor={
           theme === 'light' ? 'rgb(229, 231, 235)' : 'rgba(229, 231, 235, .2)'
@@ -224,8 +224,8 @@ export default function Experience() {
               icon=<PiLaptopLight />
               iconClassName="!shadow-none !border-none !bg-white dark:!bg-gray-950"
             >
-              <h3 className="!font-medium !text-xl">{item.title}</h3>
-              <div className="flex items-center mt-2">
+              <h3 className="!text-xl !font-medium">{item.title}</h3>
+              <div className="mt-2 flex items-center">
                 <Image
                   src={item.companyLogo.src}
                   alt={item.company}
@@ -235,15 +235,15 @@ export default function Experience() {
                   className="h-8 w-8"
                 />
                 <div className="ml-2">
-                  <p className="!font-normal !text-sm !mt-0">
+                  <p className="!mt-0 !text-sm !font-normal">
                     {item.company} · {item.employmentType}
                   </p>
-                  <p className="!font-normal !text-sm !mt-0">
+                  <p className="!mt-0 !text-sm !font-normal">
                     {item.location} · {item.locationType}
                   </p>
                 </div>
               </div>
-              <p className="!font-normal !text-base !leading-8 !mt-4">
+              <p className="!mt-4 !text-base !leading-8 !font-normal">
                 {item.description}
               </p>
             </VerticalTimelineElement>
