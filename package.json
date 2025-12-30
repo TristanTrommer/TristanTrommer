@@ -25,7 +25,7 @@
     "aws4fetch": "^1.0.20",
     "clsx": "^2.1.1",
     "fast-xml-parser": "^5.3.3",
-    "framer-motion": "^12.23.26",
+    "motion": "^12.23.26",
     "next": "15.5.9",
     "react": "^19",
     "react-dom": "^19",
