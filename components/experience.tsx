@@ -227,7 +227,7 @@ export default function Experience() {
               <h3 className="!text-xl !font-medium">{item.title}</h3>
               <div className="mt-2 flex items-center">
                 <Image
-                  src={item.companyLogo.src}
+                  src={item.companyLogo}
                   alt={item.company}
                   width="32"
                   height="32"

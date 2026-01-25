@@ -35,7 +35,7 @@ export default function About() {
             }}
           >
             <Image
-              src={tristantrommer.src}
+              src={tristantrommer}
               alt="Tristan Trommer"
               width="96"
               height="96"

@@ -113,7 +113,7 @@ export default function Projects() {
             >
               <div>
                 <Image
-                  src={item.image.src}
+                  src={item.image}
                   alt={item.title}
                   width="400"
                   height="300"
@@ -136,7 +136,7 @@ export default function Projects() {
               className="group bg-opacity-80 dark:bg-opacity-75 relative mx-auto max-w-xl rounded-lg bg-white shadow-lg shadow-black/[0.03] dark:border-black/40 dark:bg-gray-950"
             >
               <Image
-                src={item.image.src}
+                src={item.image}
                 alt={item.title}
                 width="400"
                 height="300"
