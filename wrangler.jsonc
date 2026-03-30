@@ -1,0 +1,83 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tristantrommer",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-10-08",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1,
+      "persist": true
+    }
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "tristantrommer"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "tristantrommer-cache"
+    }
+  ],
+  "route": {
+    "pattern": "tristantrommer.com",
+    "custom_domain": true
+  },
+  "workers_dev": false,
+  "env": {
+    "preview": {
+      "name": "tristantrommer-preview",
+      "main": ".open-next/worker.js",
+      "compatibility_date": "2025-10-08",
+      "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+      "observability": {
+        "logs": {
+          "enabled": true,
+          "head_sampling_rate": 1,
+          "persist": true,
+          "invocation_logs": true
+        },
+        "traces": {
+          "enabled": true,
+          "head_sampling_rate": 1,
+          "persist": true
+        }
+      },
+      "assets": {
+        "binding": "ASSETS",
+        "directory": ".open-next/assets"
+      },
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "tristantrommer-preview"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "NEXT_INC_CACHE_R2_BUCKET",
+          "bucket_name": "tristantrommer-cache-preview"
+        }
+      ],
+      "route": {
+        "pattern": "preview.tristantrommer.com",
+        "custom_domain": true
+      },
+      "workers_dev": false
+    }
+  }
+}
