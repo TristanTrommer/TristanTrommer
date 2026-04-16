@@ -10,11 +10,20 @@ export default function Blog() {
   const { ref } = useActiveHash('Blog');
 
   const [data, setData] = useState<IRSS | object>({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      const json = await rssJson();
-      setData(json);
+      try {
+        const json = await rssJson();
+        if (json === null) {
+          setError(true);
+        } else {
+          setData(json);
+        }
+      } catch {
+        setError(true);
+      }
     }
 
     fetchData();
@@ -35,7 +44,10 @@ export default function Blog() {
       >
         Blog
       </motion.h2>
-      {(!data || !('items' in data) || data.items.length === 0) && (
+      {error && (
+        <p className="text-center">Blog could not be loaded.</p>
+      )}
+      {!error && (!data || !('items' in data) || data.items.length === 0) && (
         <p className="text-center">There are no posts available.</p>
       )}
       {data &&

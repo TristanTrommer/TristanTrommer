@@ -26,7 +26,8 @@ export interface IRSSItem {
   [key: string]: unknown;
 }
 
-export const rssJson = async () => {
+export const rssJson = async (): Promise<IRSS | null> => {
+  try {
   const response = await fetch('https://medium.com/feed/@tristantrommer', {
     cache: 'no-store'
   });
@@ -170,4 +171,7 @@ export const rssJson = async () => {
   }
 
   return json;
+  } catch {
+    return null;
+  }
 };
