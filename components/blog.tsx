@@ -44,9 +44,7 @@ export default function Blog() {
       >
         Blog
       </motion.h2>
-      {error && (
-        <p className="text-center">Blog could not be loaded.</p>
-      )}
+      {error && <p className="text-center">Blog could not be loaded.</p>}
       {!error && (!data || !('items' in data) || data.items.length === 0) && (
         <p className="text-center">There are no posts available.</p>
       )}

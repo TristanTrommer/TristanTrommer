@@ -34,6 +34,11 @@
       "bucket_name": "tristantrommer-cache"
     }
   ],
+  "send_email": [
+    {
+      "name": "SEND_EMAIL"
+    }
+  ],
   "route": {
     "pattern": "tristantrommer.com",
     "custom_domain": true
@@ -72,6 +77,11 @@
         {
           "binding": "NEXT_INC_CACHE_R2_BUCKET",
           "bucket_name": "tristantrommer-cache-preview"
+        }
+      ],
+      "send_email": [
+        {
+          "name": "SEND_EMAIL"
         }
       ],
       "route": {

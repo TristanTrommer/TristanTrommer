@@ -1040,86 +1040,7 @@ export default function Page() {
 
         {/* Section 18 */}
         <h2 className="mb-4 text-3xl font-medium">
-          18. Privacy Policy Regarding the Use of Amazon Simple Email Service
-          (AWS SES)
-        </h2>
-        <p className="mb-4">
-          Amazon Simple Email Service (AWS SES) is a cloud-based email delivery
-          service from Amazon Web Services used for the reliable delivery of
-          transactional emails. We use AWS SES exclusively for sending
-          transactional emails, such as confirmation emails, notifications, and
-          system-related messages. No marketing emails are sent via this
-          service.
-        </p>
-        <p className="mb-4">
-          When using AWS SES, personal data is processed, in particular the
-          recipients&apos; email addresses, subject lines, email content,
-          timestamps, IP addresses, and bounce and delivery information (e.g.,
-          whether an email was delivered or rejected).
-        </p>
-        <p className="mb-4">
-          The operator of the service and thus the recipient of the personal
-          data is: Amazon Web Services, Inc., 410 Terry Avenue North, Seattle,
-          WA 98109, USA. For data subjects in the EU and the EEA, Amazon Web
-          Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Luxembourg, acts
-          as the contact point and representative within the meaning of Article
-          27 of the GDPR. The representative under UK national law is: Amazon
-          Web Services EMEA SARL, UK Branch, 1 Principal Place, London, Worship
-          Street, EC2A 2FA, United Kingdom. The representative under Art. 14 of
-          the Federal Act on Data Protection (FADP) in Switzerland is: Amazon
-          Web Services Switzerland GmbH, Mythenquai 10, 8002 Zurich,
-          Switzerland.
-        </p>
-        <p className="mb-4">
-          Purposes for which the personal data is to be processed, as well as
-          the legal basis for the processing: The purpose of the processing is
-          to send transactional emails in connection with the performance of a
-          contract or the implementation of pre-contractual measures, such as
-          sending registration confirmations, password resets, or status
-          notifications. The processing is based on Article 6(1)(b) of the GDPR,
-          insofar as the emails serve to fulfill a contract with the data
-          subject, as well as on Article 6(1)(f) of the GDPR for system-related
-          notifications, whereby the legitimate interest lies in the reliable
-          and secure delivery of communications necessary for operations.
-        </p>
-        <p className="mb-4">
-          The service provider is located in a third country, namely the United
-          States. Transfers to third countries may be based on the conclusion of
-          standard contractual clauses or on other suitable or appropriate
-          safeguards referred to in Article 46(2) of the GDPR. Amazon may be a
-          certified member of one or more data privacy frameworks. Further
-          details can be found at{' '}
-          <Link
-            href="https://www.dataprivacyframework.gov/list"
-            target="_blank"
-          >
-            https://www.dataprivacyframework.gov/list
-          </Link>
-          . You may request a copy of the appropriate or adequate safeguards
-          from us.
-        </p>
-        <p className="mb-4">
-          The criteria for determining the duration for which personal data is
-          processed are the contractual relationship between us and the service
-          provider or statutory or contractual retention periods. The provision
-          of personal data is required by law or contract, or is necessary for
-          the conclusion of a contract, insofar as the sending of emails is
-          necessary for the performance of the contract. However, if you do not
-          provide this data, you may not be able to use our services or those of
-          the service provider.
-        </p>
-        <p className="mb-8">
-          Further information and the applicable privacy policy of Amazon SES
-          can be found at{' '}
-          <Link href="https://aws.amazon.com/ses/" target="_blank">
-            https://aws.amazon.com/ses/
-          </Link>
-          .
-        </p>
-
-        {/* Section 19 */}
-        <h2 className="mb-4 text-3xl font-medium">
-          19. Privacy Policy Regarding the Use of Cloudflare
+          18. Privacy Policy Regarding the Use of Cloudflare
         </h2>
         <p className="mb-4">
           Cloudflare is our exclusive hosting and infrastructure provider. Our
@@ -1127,19 +1048,29 @@ export default function Page() {
           platform. In particular, we use Cloudflare Workers (serverless
           execution environment for our applications), Cloudflare D1 (serverless
           relational database), Cloudflare R2 (object storage), Cloudflare
-          Queues (message queues for asynchronous processing), Cloudflare DNS
-          (Domain Name System), Cloudflare CDN (Content Delivery Network for
-          fast content delivery), DDoS protection, and a Web Application
-          Firewall (WAF). By operating entirely on Cloudflare, we can ensure
-          high availability, security, and performance of our services
-          worldwide.
+          Queues (message queues for asynchronous processing), Cloudflare Email
+          Workers (serverless email sending for transactional emails),
+          Cloudflare DNS (Domain Name System), Cloudflare CDN (Content Delivery
+          Network for fast content delivery), DDoS protection, and a Web
+          Application Firewall (WAF). By operating entirely on Cloudflare, we
+          can ensure high availability, security, and performance of our
+          services worldwide.
         </p>
         <p className="mb-4">
           When using Cloudflare services, data such as IP addresses, system
-          configurations, network traffic information, and application and
-          database data are processed. This information is necessary to operate
-          our applications, defend against threats, optimize traffic, and ensure
-          the functionality of our services.
+          configurations, network traffic information, application and database
+          data, as well as recipient email addresses, subject lines, email
+          content, and delivery-related metadata are processed. This information
+          is necessary to operate our applications, defend against threats,
+          optimize traffic, and ensure the functionality of our services.
+        </p>
+        <p className="mb-4">
+          We use Cloudflare Email Workers exclusively for sending transactional
+          emails, such as contact form confirmations and system notifications.
+          No marketing emails are sent via this service. When sending emails,
+          personal data such as recipient addresses, subject lines, email
+          content, and delivery-related metadata (e.g., delivery status, bounce
+          information) may be processed.
         </p>
         <p className="mb-4">
           The operator of the service and thus the recipient of the personal
@@ -1154,10 +1085,13 @@ export default function Page() {
         <p className="mb-4">
           Purposes for which personal data is to be processed, as well as the
           legal basis for processing: The purpose of processing is the use of
-          services to secure and optimize websites and web applications.
-          Processing is based on Article 6(1)(f) of the GDPR, whereby the
-          legitimate interest lies in ensuring the security, performance, and
-          reliability of our online presence.
+          services to secure and optimize websites and web applications, as well
+          as the sending of transactional emails in connection with the
+          performance of a contract or pre-contractual measures. Processing is
+          based on Article 6(1)(f) of the GDPR, whereby the legitimate interest
+          lies in ensuring the security, performance, and reliability of our
+          online presence, as well as on Article 6(1)(b) of the GDPR insofar as
+          emails are sent to fulfill a contract with the data subject.
         </p>
         <p className="mb-4">
           The service provider is located in a third country, namely the United
@@ -1194,9 +1128,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 22 */}
+        {/* Section 21 */}
         <h2 className="mb-4 text-3xl font-medium">
-          22. Privacy Policy Regarding the Use of Cloudflare Email Protection
+          21. Privacy Policy Regarding the Use of Cloudflare Email Protection
         </h2>
         <p className="mb-4">
           We use Cloudflare Email Protection to secure our email traffic against
@@ -1277,9 +1211,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 23 */}
+        {/* Section 22 */}
         <h2 className="mb-4 text-3xl font-medium">
-          23. Privacy Policy Regarding the Use of Cloudflare Web Analytics
+          22. Privacy Policy Regarding the Use of Cloudflare Web Analytics
         </h2>
         <p className="mb-4">
           Cloudflare Web Analytics is a powerful analytics tool that provides us
@@ -1348,9 +1282,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 24 */}
+        {/* Section 23 */}
         <h2 className="mb-4 text-3xl font-medium">
-          24. Privacy Policy Regarding the Use of Cloudflare Turnstile
+          23. Privacy Policy Regarding the Use of Cloudflare Turnstile
         </h2>
         <p className="mb-4">
           Cloudflare Turnstile is a privacy-friendly CAPTCHA service from

@@ -1,6 +1,6 @@
 'use server';
 
-import { AwsClient } from 'aws4fetch';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 type TurnstileValidationErrorCode =
   /** The secret parameter was not passed. */
@@ -25,60 +25,6 @@ interface TurnstileValidationResponse {
   challenge_ts?: string;
   action?: string;
   cdata?: string;
-}
-
-const aws = new AwsClient({
-  accessKeyId: process.env.AWS_ACCESS_KEY || '',
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
-  region: process.env.AWS_REGION || ''
-});
-
-async function sendSES(params: {
-  toAddresses: string[];
-  subject: string;
-  htmlMessage: string;
-  textMessage: string;
-}) {
-  const response = await aws.fetch(
-    `https://email.${process.env.AWS_REGION || ''}.amazonaws.com/v2/email/outbound-emails`,
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        Destination: {
-          ToAddresses: params.toAddresses
-        },
-        FromEmailAddress: 'Tristan Trommer <noreply@tristantrommer.com>',
-        Content: {
-          Simple: {
-            Subject: {
-              Data: params.subject
-            },
-            Body: {
-              Text: {
-                Data: params.textMessage
-              },
-              Html: {
-                Data: params.htmlMessage
-              }
-            }
-          }
-        }
-      })
-    }
-  );
-
-  const responseText = await response.json();
-
-  if (response.status != 200 && response.status != 201) {
-    throw new Error(
-      response.status + ' ' + response.statusText + ' ' + responseText
-    );
-  }
-
-  return response.status;
 }
 
 export const email = async (formData: FormData) => {
@@ -122,19 +68,24 @@ export const email = async (formData: FormData) => {
     };
   }
 
+  const { env } = getCloudflareContext();
+  const from = `noreply@${process.env.EMAIL_DOMAIN}`;
+
   try {
-    await sendSES({
-      toAddresses: ['hi@tristantrommer.com'],
+    await env.SEND_EMAIL.send({
+      to: 'hi@tristantrommer.com',
+      from,
       subject: `${name} sent a message via contact form!`,
-      htmlMessage: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
-      textMessage: `Name: ${name} Email: ${email} Message: ${message}`
+      html: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     });
 
-    await sendSES({
-      toAddresses: [email.toString()],
+    await env.SEND_EMAIL.send({
+      to: email.toString(),
+      from,
       subject: `Thanks for your message, ${name}!`,
-      htmlMessage: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
-      textMessage: `Thanks for your message, ${name}! I will get back to you soon.`
+      html: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
+      text: `Thanks for your message, ${name}!\n\nI will get back to you soon.`
     });
 
     return {
