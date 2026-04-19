@@ -961,9 +961,9 @@ export default function Page() {
           this. We are happy to serve as your point of contact in this regard.
         </p>
 
-        {/* Section 17 */}
+        {/* Section 16 */}
         <h2 className="mb-4 text-3xl font-medium">
-          17. Privacy Policy Regarding the Use of Cloudflare Zaraz Consent
+          16. Privacy Policy Regarding the Use of Cloudflare Zaraz Consent
           Management
         </h2>
         <p className="mb-4">
@@ -1038,9 +1038,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 18 */}
+        {/* Section 17 */}
         <h2 className="mb-4 text-3xl font-medium">
-          18. Privacy Policy Regarding the Use of Cloudflare
+          17. Privacy Policy Regarding the Use of Cloudflare
         </h2>
         <p className="mb-4">
           Cloudflare is our exclusive hosting and infrastructure provider. Our
@@ -1128,9 +1128,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 21 */}
+        {/* Section 18 */}
         <h2 className="mb-4 text-3xl font-medium">
-          21. Privacy Policy Regarding the Use of Cloudflare Email Protection
+          18. Privacy Policy Regarding the Use of Cloudflare Email Protection
         </h2>
         <p className="mb-4">
           We use Cloudflare Email Protection to secure our email traffic against
@@ -1211,9 +1211,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 22 */}
+        {/* Section 19 */}
         <h2 className="mb-4 text-3xl font-medium">
-          22. Privacy Policy Regarding the Use of Cloudflare Web Analytics
+          19. Privacy Policy Regarding the Use of Cloudflare Web Analytics
         </h2>
         <p className="mb-4">
           Cloudflare Web Analytics is a powerful analytics tool that provides us
@@ -1282,9 +1282,9 @@ export default function Page() {
           .
         </p>
 
-        {/* Section 23 */}
+        {/* Section 20 */}
         <h2 className="mb-4 text-3xl font-medium">
-          23. Privacy Policy Regarding the Use of Cloudflare Turnstile
+          20. Privacy Policy Regarding the Use of Cloudflare Turnstile
         </h2>
         <p className="mb-4">
           Cloudflare Turnstile is a privacy-friendly CAPTCHA service from
