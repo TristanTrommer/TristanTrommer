@@ -76,23 +76,24 @@ export const email = async (formData: FormData) => {
   const replyTo = { name: 'Tristan Trommer', email: 'hi@tristantrommer.com' };
 
   try {
-    await env.SEND_EMAIL.send({
-      to: 'hi@tristantrommer.com',
-      from,
-      replyTo,
-      subject: `${name} sent a message via contact form!`,
-      html: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-    });
-
-    await env.SEND_EMAIL.send({
-      to: email.toString(),
-      from,
-      replyTo,
-      subject: `Thanks for your message, ${name}!`,
-      html: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
-      text: `Thanks for your message, ${name}!\n\nI will get back to you soon.`
-    });
+    await Promise.all([
+      env.SEND_EMAIL.send({
+        to: 'hi@tristantrommer.com',
+        from,
+        replyTo,
+        subject: `${name} sent a message via contact form!`,
+        html: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+      }),
+      env.SEND_EMAIL.send({
+        to: email.toString(),
+        from,
+        replyTo,
+        subject: `Thanks for your message, ${name}!`,
+        html: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
+        text: `Thanks for your message, ${name}!\n\nI will get back to you soon.`
+      })
+    ]);
 
     return {
       error: false
