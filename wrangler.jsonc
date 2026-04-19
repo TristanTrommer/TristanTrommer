@@ -36,7 +36,8 @@
   ],
   "send_email": [
     {
-      "name": "SEND_EMAIL"
+      "name": "SEND_EMAIL",
+      "allowed_sender_addresses": ["noreply@tristantrommer.com"]
     }
   ],
   "route": {
@@ -81,7 +82,8 @@
       ],
       "send_email": [
         {
-          "name": "SEND_EMAIL"
+          "name": "SEND_EMAIL",
+          "allowed_sender_addresses": ["noreply@preview.tristantrommer.com"]
         }
       ],
       "route": {
