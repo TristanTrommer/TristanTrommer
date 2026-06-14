@@ -91,7 +91,9 @@ export default function Header() {
       <button
         className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 fixed right-4 bottom-4 flex h-fit w-fit cursor-pointer items-center justify-center rounded-full border border-white bg-white text-gray-500 shadow-lg shadow-black/3 backdrop-blur-[0.5rem] transition hover:text-gray-900 sm:top-6 sm:right-6 dark:border-black/40 dark:bg-gray-950 dark:hover:text-gray-50"
         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-        title={resolvedTheme === 'dark' ? 'Light' : 'Dark'}
+        title={
+          mounted ? (resolvedTheme === 'dark' ? 'Light' : 'Dark') : undefined
+        }
       >
         <div className="m-[12px] sm:m-[19px]">
           {mounted ? (

@@ -61,157 +61,157 @@ function ExperienceCard({
   );
 }
 
+const experiencesData: ExperienceItem[] = [
+  {
+    title: 'Founder',
+    employmentType: 'Self-employed',
+    company: 'EventAssets',
+    companyLogo: eventassetsLogo,
+    location: 'Berlin, Berlin, Germany',
+    locationType: 'Remote',
+    description: (
+      <ul className="list-inside list-disc">
+        <li>Building a cloud-native event management platform.</li>
+      </ul>
+    ),
+    startDate: new Date(2025, 9),
+    endDate: 'Present'
+  },
+  {
+    title: 'Software Engineer',
+    employmentType: 'Full-time',
+    company: 'Zalando',
+    companyLogo: zalandoLogo,
+    location: 'Berlin, Berlin, Germany',
+    locationType: 'Hybrid',
+    description: (
+      <ul className="list-inside list-disc">
+        <li>
+          Aim to drive greater technical ownership by initiating and leading
+          high-impact projects, mentoring junior engineers, and promoting best
+          practices to deliver scalable, reliable solutions that support
+          Zalando&apos;s business goals.
+        </li>
+      </ul>
+    ),
+    startDate: new Date(2025, 5),
+    endDate: 'Present'
+  },
+  {
+    title: 'Junior Software Engineer',
+    employmentType: 'Full-time',
+    company: 'Zalando',
+    companyLogo: zalandoLogo,
+    location: 'Berlin, Berlin, Germany',
+    locationType: 'Hybrid',
+    description: (
+      <ul className="list-inside list-disc">
+        <li>
+          Proactively expanded domain knowledge across multiple Zalando
+          services, increasing team capacity and reducing reliance on senior
+          guidance.
+        </li>
+        <li>
+          Led and delivered key backend engineering projects in close
+          collaboration with design and product teams, resulting in improved
+          customer satisfaction and enhanced product reliability.
+        </li>
+        <li>
+          Modernized critical platform components and supported the smooth
+          migration away from legacy systems, reducing technical debt and
+          increasing system maintainability.
+        </li>
+        <li>
+          Championed adoption of modern platforms and practices, facilitating
+          seamless migration away from legacy systems.
+        </li>
+        <li>
+          Enhanced team effectiveness by actively participating in code reviews,
+          sharing knowledge, and supporting continuous improvement.
+        </li>
+      </ul>
+    ),
+    startDate: new Date(2024, 6),
+    endDate: new Date(2025, 4)
+  },
+  {
+    title: 'Junior Software Engineer',
+    employmentType: 'Apprenticeship',
+    company: 'Zalando',
+    companyLogo: zalandoLogo,
+    location: 'Berlin, Berlin, Germany',
+    locationType: 'Hybrid',
+    description: (
+      <ul className="list-inside list-disc">
+        <li>
+          Developed and maintained backend features, APIs, and tools in close
+          collaboration with senior engineers, following best practices in code
+          quality, testing, and version control.
+        </li>
+        <li>
+          Participated in the full software development lifecycle, including
+          requirements gathering, implementation, testing, deployment, and
+          support.
+        </li>
+        <li>
+          Gained experience with agile methodologies, CI/CD workflows, and
+          collaborative development environments.
+        </li>
+        <li>
+          Enhanced problem-solving skills by tackling a variety of coding,
+          debugging, and optimization tasks across multiple microservices and
+          technology stacks.
+        </li>
+        <li>
+          Built strong communication and teamwork capabilities by working with
+          cross-functional teams, gathering feedback, and contributing to a
+          collaborative engineering culture.
+        </li>
+      </ul>
+    ),
+    startDate: new Date(2021, 7),
+    endDate: new Date(2024, 5)
+  },
+  {
+    title: 'Intern',
+    employmentType: 'Internship',
+    company: 'Vessel X',
+    companyLogo: vesselxLogo,
+    location: 'İzmir, İzmir, Turkey',
+    locationType: 'Hybrid',
+    description: (
+      <ul className="list-inside list-disc">
+        <li>
+          Engineered a robust, serverless infrastructure using Google Cloud
+          Platform and PostgreSQL in support of an autonomous water surface
+          cleaning vessel project.
+        </li>
+        <li>
+          Designed and implemented backend logic and database integrations in
+          Python for real-time data processing and device communications.
+        </li>
+        <li>
+          Collaborated closely with multidisciplinary teams, aligning
+          infrastructure with project requirements and best practices in cloud
+          computing.
+        </li>
+        <li>
+          Conducted research and contributed to architectural decisions,
+          ensuring high reliability and efficiency of deployed systems.
+        </li>
+        <li>
+          Gained practical experience in cloud-native development, enhancing
+          problem-solving abilities and technical communication skills.
+        </li>
+      </ul>
+    ),
+    startDate: new Date(2023, 5),
+    endDate: new Date(2023, 7)
+  }
+];
+
 export default function Experience() {
   const { ref } = useActiveHash('Experience');
-
-  const experiencesData: ExperienceItem[] = [
-    {
-      title: 'Founder',
-      employmentType: 'Self-employed',
-      company: 'EventAssets',
-      companyLogo: eventassetsLogo,
-      location: 'Berlin, Berlin, Germany',
-      locationType: 'Remote',
-      description: (
-        <ul className="list-inside list-disc">
-          <li>Building a cloud-native event management platform.</li>
-        </ul>
-      ),
-      startDate: new Date(2025, 9),
-      endDate: 'Present'
-    },
-    {
-      title: 'Software Engineer',
-      employmentType: 'Full-time',
-      company: 'Zalando',
-      companyLogo: zalandoLogo,
-      location: 'Berlin, Berlin, Germany',
-      locationType: 'Hybrid',
-      description: (
-        <ul className="list-inside list-disc">
-          <li>
-            Aim to drive greater technical ownership by initiating and leading
-            high-impact projects, mentoring junior engineers, and promoting best
-            practices to deliver scalable, reliable solutions that support
-            Zalando&apos;s business goals.
-          </li>
-        </ul>
-      ),
-      startDate: new Date(2025, 5),
-      endDate: 'Present'
-    },
-    {
-      title: 'Junior Software Engineer',
-      employmentType: 'Full-time',
-      company: 'Zalando',
-      companyLogo: zalandoLogo,
-      location: 'Berlin, Berlin, Germany',
-      locationType: 'Hybrid',
-      description: (
-        <ul className="list-inside list-disc">
-          <li>
-            Proactively expanded domain knowledge across multiple Zalando
-            services, increasing team capacity and reducing reliance on senior
-            guidance.
-          </li>
-          <li>
-            Led and delivered key backend engineering projects in close
-            collaboration with design and product teams, resulting in improved
-            customer satisfaction and enhanced product reliability.
-          </li>
-          <li>
-            Modernized critical platform components and supported the smooth
-            migration away from legacy systems, reducing technical debt and
-            increasing system maintainability.
-          </li>
-          <li>
-            Championed adoption of modern platforms and practices, facilitating
-            seamless migration away from legacy systems.
-          </li>
-          <li>
-            Enhanced team effectiveness by actively participating in code
-            reviews, sharing knowledge, and supporting continuous improvement.
-          </li>
-        </ul>
-      ),
-      startDate: new Date(2024, 6),
-      endDate: new Date(2025, 4)
-    },
-    {
-      title: 'Junior Software Engineer',
-      employmentType: 'Apprenticeship',
-      company: 'Zalando',
-      companyLogo: zalandoLogo,
-      location: 'Berlin, Berlin, Germany',
-      locationType: 'Hybrid',
-      description: (
-        <ul className="list-inside list-disc">
-          <li>
-            Developed and maintained backend features, APIs, and tools in close
-            collaboration with senior engineers, following best practices in
-            code quality, testing, and version control.
-          </li>
-          <li>
-            Participated in the full software development lifecycle, including
-            requirements gathering, implementation, testing, deployment, and
-            support.
-          </li>
-          <li>
-            Gained experience with agile methodologies, CI/CD workflows, and
-            collaborative development environments.
-          </li>
-          <li>
-            Enhanced problem-solving skills by tackling a variety of coding,
-            debugging, and optimization tasks across multiple microservices and
-            technology stacks.
-          </li>
-          <li>
-            Built strong communication and teamwork capabilities by working with
-            cross-functional teams, gathering feedback, and contributing to a
-            collaborative engineering culture.
-          </li>
-        </ul>
-      ),
-      startDate: new Date(2021, 7),
-      endDate: new Date(2024, 5)
-    },
-    {
-      title: 'Intern',
-      employmentType: 'Internship',
-      company: 'Vessel X',
-      companyLogo: vesselxLogo,
-      location: 'İzmir, İzmir, Turkey',
-      locationType: 'Hybrid',
-      description: (
-        <ul className="list-inside list-disc">
-          <li>
-            Engineered a robust, serverless infrastructure using Google Cloud
-            Platform and PostgreSQL in support of an autonomous water surface
-            cleaning vessel project.
-          </li>
-          <li>
-            Designed and implemented backend logic and database integrations in
-            Python for real-time data processing and device communications.
-          </li>
-          <li>
-            Collaborated closely with multidisciplinary teams, aligning
-            infrastructure with project requirements and best practices in cloud
-            computing.
-          </li>
-          <li>
-            Conducted research and contributed to architectural decisions,
-            ensuring high reliability and efficiency of deployed systems.
-          </li>
-          <li>
-            Gained practical experience in cloud-native development, enhancing
-            problem-solving abilities and technical communication skills.
-          </li>
-        </ul>
-      ),
-      startDate: new Date(2023, 5),
-      endDate: new Date(2023, 7)
-    }
-  ];
 
   return (
     <section

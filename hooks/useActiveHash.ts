@@ -3,7 +3,7 @@ import { useNavigationContext } from '@/context/NavigationContext';
 
 export function useActiveHash(activeHash: string) {
   const ref = useRef<HTMLElement | null>(null);
-  const { setActiveHash, lastClicked } = useNavigationContext();
+  const { setActiveHash, lastClickedRef } = useNavigationContext();
 
   useEffect(() => {
     const element = ref.current;
@@ -11,7 +11,10 @@ export function useActiveHash(activeHash: string) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && Date.now() - lastClicked > 1000) {
+        if (
+          entry.isIntersecting &&
+          Date.now() - lastClickedRef.current > 1000
+        ) {
           setActiveHash(activeHash);
         }
       },
@@ -25,7 +28,9 @@ export function useActiveHash(activeHash: string) {
     return () => {
       observer.disconnect();
     };
-  }, [activeHash, lastClicked, setActiveHash]);
+    // lastClickedRef is a stable ref object — reading .current inside the callback
+    // always gets the latest value without adding it as a dependency.
+  }, [activeHash, setActiveHash, lastClickedRef]);
 
   return {
     ref

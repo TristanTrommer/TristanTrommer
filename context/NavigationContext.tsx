@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useRef,
+  useState
+} from 'react';
 
 type NavigationContextProviderType = {
   children: React.ReactNode;
@@ -9,8 +15,8 @@ type NavigationContextProviderType = {
 type NavigationContextType = {
   activeHash: string;
   setActiveHash: React.Dispatch<React.SetStateAction<string>>;
-  lastClicked: number;
-  setLastClicked: React.Dispatch<React.SetStateAction<number>>;
+  lastClickedRef: React.RefObject<number>;
+  setLastClicked: (value: number) => void;
 };
 
 export const NavigationContext = createContext<NavigationContextType | null>(
@@ -21,14 +27,18 @@ export default function NavigationContextProvider({
   children
 }: NavigationContextProviderType) {
   const [activeHash, setActiveHash] = useState<string>('About');
-  const [lastClicked, setLastClicked] = useState<number>(0);
+  const lastClickedRef = useRef<number>(0);
+
+  const setLastClicked = useCallback((value: number) => {
+    lastClickedRef.current = value;
+  }, []);
 
   return (
     <NavigationContext.Provider
       value={{
         activeHash,
         setActiveHash,
-        lastClicked,
+        lastClickedRef,
         setLastClicked
       }}
     >

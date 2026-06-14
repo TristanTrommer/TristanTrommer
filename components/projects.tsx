@@ -8,94 +8,83 @@ import tristantrommerImage from '@/public/images/projects/tristantrommer.webp';
 import { PiGitBranchLight, PiLinkLight } from 'react-icons/pi';
 import { elapsedTimeString } from '@/helper/helper';
 
+interface ProjectItem {
+  primary: boolean;
+  title: string;
+  image: StaticImageData;
+  git?: string;
+  url?: string;
+  description: React.ReactElement;
+  startDate: Date;
+  endDate: Date | 'Present';
+}
+
+function ProjectData({ item }: { item: ProjectItem }) {
+  return (
+    <div className="px-8 py-6">
+      <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
+      <p className="mb-4 text-sm">
+        {`${item.startDate.toLocaleDateString('en', {
+          year: 'numeric',
+          month: 'short'
+        })} - ${
+          item.endDate != 'Present'
+            ? item.endDate.toLocaleDateString('en', {
+                year: 'numeric',
+                month: 'short'
+              })
+            : item.endDate
+        } · ${elapsedTimeString(item.startDate, item.endDate)}`}
+      </p>
+      <p>{item.description}</p>
+      {(item.git || item.url) && (
+        <div className="mt-4 flex gap-2 text-xl">
+          {item.git && (
+            <a href={item.git} title="Git" target="_blank">
+              <PiGitBranchLight />
+            </a>
+          )}
+          {item.url && (
+            <a href={item.url} title="URL" target="_blank">
+              <PiLinkLight />
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const projectsData: ProjectItem[] = [
+  {
+    primary: true,
+    title: 'Tristan Trommer',
+    image: tristantrommerImage,
+    git: 'https://github.com/tristantrommer/tristantrommer',
+    url: 'https://tristantrommer.com',
+    description: (
+      <>
+        Personal website built using TypeScript, NextJS, Framer Motion and
+        Tailwind CSS running on Cloudflare Pages.
+      </>
+    ),
+    startDate: new Date(2024, 0),
+    endDate: new Date(2024, 0)
+  }
+  // {
+  //   primary: false,
+  //   title: 'Example',
+  //   image: exampleImage,
+  //   url: 'https://example.com',
+  //   description:
+  //     <>Example.</>,
+  //   startDate: new Date(2001, 01),
+  //   endDate: new Date(2002, 02)
+  // }
+];
+
 export default function Projects() {
   const { ref } = useActiveHash('Projects');
-
-  const projectsData: Array<{
-    primary: boolean;
-    title: string;
-    image: StaticImageData;
-    git?: string;
-    url?: string;
-    description: React.ReactElement;
-    startDate: Date;
-    endDate: Date | 'Present';
-  }> = [
-    {
-      primary: true,
-      title: 'Tristan Trommer',
-      image: tristantrommerImage,
-      git: 'https://github.com/tristantrommer/tristantrommer',
-      url: 'https://tristantrommer.com',
-      description: (
-        <>
-          Personal website built using TypeScript, NextJS, Framer Motion and
-          Tailwind CSS running on Cloudflare Pages.
-        </>
-      ),
-      startDate: new Date(2024, 0),
-      endDate: new Date(2024, 0)
-    }
-    // {
-    //   primary: false,
-    //   title: 'Example',
-    //   image: exampleImage,
-    //   url: 'https://example.com',
-    //   description:
-    //     <>Example.</>,
-    //   startDate: new Date(2001, 01),
-    //   endDate: new Date(2002, 02)
-    // }
-  ];
-
-  const Data = ({
-    item
-  }: {
-    item: {
-      primary: boolean;
-      title: string;
-      image: StaticImageData;
-      git?: string;
-      url?: string;
-      description: React.ReactElement;
-      startDate: Date;
-      endDate: Date | 'Present';
-    };
-  }) => {
-    return (
-      <div className="px-8 py-6">
-        <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
-        <p className="mb-4 text-sm">
-          {`${item.startDate.toLocaleDateString('en', {
-            year: 'numeric',
-            month: 'short'
-          })} - ${
-            item.endDate != 'Present'
-              ? item.endDate.toLocaleDateString('en', {
-                  year: 'numeric',
-                  month: 'short'
-                })
-              : item.endDate
-          } · ${elapsedTimeString(item.startDate, item.endDate)}`}
-        </p>
-        <p>{item.description}</p>
-        {(item.git || item.url) && (
-          <div className="mt-4 flex gap-2 text-xl">
-            {item.git && (
-              <a href={item.git} title="Git" target="_blank">
-                <PiGitBranchLight />
-              </a>
-            )}
-            {item.url && (
-              <a href={item.url} title="URL" target="_blank">
-                <PiLinkLight />
-              </a>
-            )}
-          </div>
-        )}
-      </div>
-    );
-  };
 
   return (
     <section
@@ -138,7 +127,7 @@ export default function Projects() {
                   className="w-full rounded-t-lg"
                 />
                 <div>
-                  <Data item={item} />
+                  <ProjectData item={item} />
                 </div>
               </div>
             </motion.div>
@@ -162,7 +151,7 @@ export default function Projects() {
               />
               <div className="absolute inset-0 rounded-md bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-60 group-focus:opacity-60"></div>
               <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 focus:opacity-100">
-                <Data item={item} />
+                <ProjectData item={item} />
               </div>
             </div>
           ))}

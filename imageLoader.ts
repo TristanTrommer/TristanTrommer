@@ -11,7 +11,10 @@ export default function cloudflareLoader({
   width: number;
   quality?: number;
 }) {
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'preview') {
+  if (
+    process.env.NEXT_PUBLIC_ENVIRONMENT === 'preview' ||
+    process.env.NODE_ENV === 'development'
+  ) {
     return src;
   }
 
