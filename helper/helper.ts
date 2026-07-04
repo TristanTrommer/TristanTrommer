@@ -3,8 +3,8 @@ export const elapsedTime = (startDate: Date, endDate: Date | 'Present') => {
     endDate = new Date(Date.now());
   }
 
-  let years = endDate.getFullYear() - startDate.getFullYear();
-  let months = endDate.getMonth() - startDate.getMonth() + 1;
+  let years = endDate.getUTCFullYear() - startDate.getUTCFullYear();
+  let months = endDate.getUTCMonth() - startDate.getUTCMonth() + 1;
 
   if (months < 0) {
     years--;

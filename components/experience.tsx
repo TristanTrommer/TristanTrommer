@@ -74,7 +74,7 @@ const experiencesData: ExperienceItem[] = [
         <li>Building a cloud-native event management platform.</li>
       </ul>
     ),
-    startDate: new Date(2025, 9),
+    startDate: new Date(Date.UTC(2025, 9)),
     endDate: 'Present'
   },
   {
@@ -94,7 +94,7 @@ const experiencesData: ExperienceItem[] = [
         </li>
       </ul>
     ),
-    startDate: new Date(2025, 5),
+    startDate: new Date(Date.UTC(2025, 5)),
     endDate: 'Present'
   },
   {
@@ -131,8 +131,8 @@ const experiencesData: ExperienceItem[] = [
         </li>
       </ul>
     ),
-    startDate: new Date(2024, 6),
-    endDate: new Date(2025, 4)
+    startDate: new Date(Date.UTC(2024, 6)),
+    endDate: new Date(Date.UTC(2025, 4))
   },
   {
     title: 'Junior Software Engineer',
@@ -169,8 +169,8 @@ const experiencesData: ExperienceItem[] = [
         </li>
       </ul>
     ),
-    startDate: new Date(2021, 7),
-    endDate: new Date(2024, 5)
+    startDate: new Date(Date.UTC(2021, 7)),
+    endDate: new Date(Date.UTC(2024, 5))
   },
   {
     title: 'Intern',
@@ -205,8 +205,8 @@ const experiencesData: ExperienceItem[] = [
         </li>
       </ul>
     ),
-    startDate: new Date(2023, 5),
-    endDate: new Date(2023, 7)
+    startDate: new Date(Date.UTC(2023, 5)),
+    endDate: new Date(Date.UTC(2023, 7))
   }
 ];
 
@@ -238,12 +238,14 @@ export default function Experience() {
             const isEven = index % 2 === 0;
             const dateStr = `${item.startDate.toLocaleDateString('en', {
               year: 'numeric',
-              month: 'short'
+              month: 'short',
+              timeZone: 'UTC'
             })} - ${
               item.endDate !== 'Present'
                 ? item.endDate.toLocaleDateString('en', {
                     year: 'numeric',
-                    month: 'short'
+                    month: 'short',
+                    timeZone: 'UTC'
                   })
                 : item.endDate
             } · ${elapsedTimeString(item.startDate, item.endDate)}`;

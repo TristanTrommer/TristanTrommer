@@ -26,12 +26,14 @@ function ProjectData({ item }: { item: ProjectItem }) {
       <p className="mb-4 text-sm">
         {`${item.startDate.toLocaleDateString('en', {
           year: 'numeric',
-          month: 'short'
+          month: 'short',
+          timeZone: 'UTC'
         })} - ${
           item.endDate != 'Present'
             ? item.endDate.toLocaleDateString('en', {
                 year: 'numeric',
-                month: 'short'
+                month: 'short',
+                timeZone: 'UTC'
               })
             : item.endDate
         } · ${elapsedTimeString(item.startDate, item.endDate)}`}
@@ -68,8 +70,8 @@ const projectsData: ProjectItem[] = [
         Tailwind CSS running on Cloudflare Pages.
       </>
     ),
-    startDate: new Date(2024, 0),
-    endDate: new Date(2024, 0)
+    startDate: new Date(Date.UTC(2024, 0)),
+    endDate: new Date(Date.UTC(2024, 0))
   }
   // {
   //   primary: false,
@@ -78,8 +80,8 @@ const projectsData: ProjectItem[] = [
   //   url: 'https://example.com',
   //   description:
   //     <>Example.</>,
-  //   startDate: new Date(2001, 01),
-  //   endDate: new Date(2002, 02)
+  //   startDate: new Date(Date.UTC(2001, 01)),
+  //   endDate: new Date(Date.UTC(2002, 02))
   // }
 ];
 
