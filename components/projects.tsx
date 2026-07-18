@@ -5,6 +5,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import Image, { StaticImageData } from 'next/image';
 import tristantrommerImage from '@/public/images/projects/tristantrommer.webp';
+import eventassetsImage from '@/public/images/projects/eventassets.webp';
 import { PiGitBranchLight, PiLinkLight } from 'react-icons/pi';
 import { elapsedTimeString } from '@/helper/helper';
 
@@ -67,11 +68,20 @@ const projectsData: ProjectItem[] = [
     description: (
       <>
         Personal website built using TypeScript, NextJS, Framer Motion and
-        Tailwind CSS running on Cloudflare Pages.
+        Tailwind CSS running on Cloudflare Workers.
       </>
     ),
     startDate: new Date(Date.UTC(2024, 0)),
     endDate: new Date(Date.UTC(2024, 0))
+  },
+  {
+    primary: true,
+    title: 'EventAssets',
+    image: eventassetsImage,
+    url: 'https://eventassets.com',
+    description: <>Cloud-native event management platform.</>,
+    startDate: new Date(Date.UTC(2025, 5)),
+    endDate: 'Present'
   }
   // {
   //   primary: false,
