@@ -21,7 +21,7 @@ export default function About() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-180 scroll-mt-28 text-center leading-8 sm:mb-40"
+      className="mb-24 w-full max-w-3xl scroll-mt-28 text-center sm:mb-40"
       id="about"
     >
       <div className="flex items-center justify-center">
@@ -45,36 +45,57 @@ export default function About() {
       </div>
 
       <motion.h1
-        className="mt-4 mb-10 px-4 text-2xl leading-normal! font-medium sm:text-4xl"
+        className="mt-4 px-4 text-3xl font-bold sm:text-5xl"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
       >
-        Hello, I&apos;m <span className="font-bold">Tristan Trommer</span>.{' '}
-        I&apos;m a <span className="font-bold">Software Engineer</span>{' '}
-        passionate about
-        <br />
+        Tristan Trommer
+      </motion.h1>
+
+      <motion.p
+        className="mt-3 mb-10 px-4 text-sm leading-7 text-gray-500 sm:text-base dark:text-gray-400"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.22 }}
+      >
+        Software Engineer @ Zalando • Distributed Systems, System Architecture
+        &amp; High-Velocity Delivery •{' '}
         <TypeAnimation
           sequence={[
             'Agile Methodologies',
             1000,
             'Amazon Web Services (AWS)',
             1000,
+            'Apache Airflow',
+            1000,
+            'Cats Effect',
+            1000,
             'Cloudflare',
             1000,
-            'Cloudflare Pages',
+            'Cloudflare Containers',
+            1000,
+            'Cloudflare D1',
+            1000,
+            'Cloudflare Email Service',
+            1000,
+            'Cloudflare Queues',
+            1000,
+            'Cloudflare R2',
             1000,
             'Cloudflare Workers',
+            1000,
+            'Code Refactoring',
             1000,
             'Continuous Delivery (CD)',
             1000,
             'Continuous Integration (CI)',
             1000,
+            'Distributed Systems',
+            1000,
             'Docker',
             1000,
             'Flask',
-            1000,
-            'Framer Motion',
             1000,
             'Functional Programming',
             1000,
@@ -86,21 +107,35 @@ export default function About() {
             1000,
             'Google Cloud Platform (GCP)',
             1000,
+            'Integration Testing',
+            1000,
             'Java',
+            1000,
+            'Java Object Oriented Querying (jOOQ)',
             1000,
             'JavaScript',
             1000,
             'JSON',
             1000,
+            'Kotlin',
+            1000,
             'Kubernetes',
+            1000,
+            'Message Queue',
             1000,
             'MySQL',
             1000,
             'Next.js',
             1000,
+            'OpenTelemetry',
+            1000,
             'PostgreSQL',
             1000,
-            'Python',
+            'Product Management',
+            1000,
+            'Product Marketing',
+            1000,
+            'Python (Programming Language)',
             1000,
             'React.js',
             1000,
@@ -112,19 +147,24 @@ export default function About() {
             1000,
             'Spring Framework',
             1000,
+            'System Architecture',
+            1000,
+            'System Migration',
+            1000,
             'Tailwind CSS',
             1000,
             'TypeScript',
+            1000,
+            'Unit Testing',
             1000
           ]}
           wrapper="span"
-          className="bg-linear-to-br from-[#66a6ff] to-[#89f7fe] bg-clip-text font-bold text-transparent"
+          className="bg-linear-to-br from-[#66a6ff] to-[#89f7fe] bg-clip-text font-semibold text-transparent"
           speed={50}
           repeat={Infinity}
           cursor={false}
         />
-        .
-      </motion.h1>
+      </motion.p>
 
       <motion.div
         className="mb-10 flex flex-col items-center justify-center gap-2 px-4 sm:mb-0 sm:flex-row"
@@ -175,29 +215,41 @@ export default function About() {
       </div>
 
       <motion.p
-        className="mb-4"
+        className="mb-4 text-base leading-6 text-gray-600 dark:text-gray-300"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        As a Software Engineer passionate about building robust and scalable
-        solutions, I thrive in dynamic teams where technology drives real-world
-        impact. My experience spans from hands-on product development and cloud
-        infrastructure to cross-team collaboration in agile environments. With a
-        strong foundation in software engineering and a track record of rapidly
-        acquiring new technologies, I consistently deliver high-quality,
-        efficient code and innovative solutions.
+        I am a Software Engineer specializing in distributed systems, backend
+        architecture, and cloud-native engineering. I thrive in high-velocity,
+        high-scale environments where performance, strict availability, and
+        delivery speed directly drive business value.
       </motion.p>
       <motion.p
+        className="mb-4 text-base leading-6 text-gray-600 dark:text-gray-300"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
       >
-        Eager to continuously grow and contribute, I believe in learning by
-        doing, sharing insights, and championing best practices for the success
-        of my team and organization.
+        My engineering philosophy centers on extreme ownership, architectural
+        pragmatism, and execution speed. Whether refactoring legacy
+        microservices, designing real-time event streaming pipelines, planning
+        zero-downtime framework migrations, or building full-stack serverless
+        applications from scratch, I focus on shipping clean, resilient, and
+        highly maintainable code.
+      </motion.p>
+      <motion.p
+        className="text-base leading-6 text-gray-600 dark:text-gray-300"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+      >
+        I am particularly interested in system design trade-offs, developer
+        experience, and modernizing complex infrastructures without interrupting
+        live operations.
       </motion.p>
     </section>
   );

@@ -32,11 +32,11 @@ export default function Blog() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-180 scroll-mt-28 leading-8 sm:mb-40"
+      className="mb-24 w-full max-w-3xl scroll-mt-28 sm:mb-40"
       id="blog"
     >
       <motion.h2
-        className="mb-8 text-center text-3xl font-medium"
+        className="mb-10 text-center text-3xl font-medium"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -92,7 +92,7 @@ export default function Blog() {
                 {item.title}
               </a>
             </h3>
-            <p className="mb-4">
+            <p className="mb-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
               {item.content
                 ? item.content
                     .replace(/<[^>]*>/g, '')

@@ -4,16 +4,33 @@ import { useActiveHash } from '@/hooks/useActiveHash';
 import React from 'react';
 
 const texts: string[] = [
+  'System Migration',
+  'Apache Airflow',
+  'OpenTelemetry',
+  'Code Refactoring',
+  'Java Object Oriented Querying (jOOQ)',
+  'Message Queue',
+  'Cats Effect',
+  'Unit Testing',
+  'Integration Testing',
+  'System Architecture',
+  'Distributed Systems',
+  'Kotlin',
+  'Product Management',
+  'Product Marketing',
+  'Cloudflare D1',
+  'Cloudflare R2',
+  'Cloudflare Containers',
+  'Cloudflare Queues',
+  'Cloudflare Email Service',
   'Agile Methodologies',
   'Amazon Web Services (AWS)',
   'Cloudflare',
-  'Cloudflare Pages',
   'Cloudflare Workers',
   'Continuous Delivery (CD)',
   'Continuous Integration (CI)',
   'Docker',
   'Flask',
-  'Framer Motion',
   'Functional Programming',
   'Git',
   'GitHub',
@@ -26,7 +43,7 @@ const texts: string[] = [
   'MySQL',
   'Next.js',
   'PostgreSQL',
-  'Python',
+  'Python (Programming Language)',
   'React.js',
   'REST APIs',
   'Scala',
@@ -142,7 +159,7 @@ export default function Skills() {
       className="mb-24 flex w-[-webkit-fill-available] scroll-mt-28 flex-col items-center overflow-x-hidden sm:mb-40"
       id="skills"
     >
-      <h2 className="mb-8 text-center text-3xl font-medium">Skills</h2>
+      <h2 className="mb-10 text-center text-3xl font-medium">Skills</h2>
       <div
         ref={tagCloudRef}
         className="tag-cloud relative"

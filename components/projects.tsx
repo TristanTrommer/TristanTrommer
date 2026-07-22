@@ -22,7 +22,7 @@ interface ProjectItem {
 
 function ProjectData({ item }: { item: ProjectItem }) {
   return (
-    <div className="px-8 py-6">
+    <div className="flex h-full flex-col px-8 py-6">
       <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
       <p className="mb-4 text-sm">
         {`${item.startDate.toLocaleDateString('en', {
@@ -39,9 +39,11 @@ function ProjectData({ item }: { item: ProjectItem }) {
             : item.endDate
         } · ${elapsedTimeString(item.startDate, item.endDate)}`}
       </p>
-      <p>{item.description}</p>
+      <p className="text-sm leading-6 text-gray-600 dark:text-gray-300">
+        {item.description}
+      </p>
       {(item.git || item.url) && (
-        <div className="mt-4 flex gap-2 text-xl">
+        <div className="mt-auto flex gap-2 pt-4 text-xl">
           {item.git && (
             <a href={item.git} title="Git" target="_blank">
               <PiGitBranchLight />
@@ -67,8 +69,10 @@ const projectsData: ProjectItem[] = [
     url: 'https://tristantrommer.com',
     description: (
       <>
-        Personal website built using TypeScript, NextJS, Framer Motion and
-        Tailwind CSS running on Cloudflare Workers.
+        A high-performance personal portfolio and engineering blog deployed
+        globally at the edge on Cloudflare Workers. Engineered with TypeScript,
+        Next.js, Framer Motion, and Tailwind CSS to achieve zero cold starts,
+        fluid UI interactions, and sub-100ms page load times worldwide.
       </>
     ),
     startDate: new Date(Date.UTC(2024, 0)),
@@ -79,7 +83,15 @@ const projectsData: ProjectItem[] = [
     title: 'EventAssets',
     image: eventassetsImage,
     url: 'https://eventassets.com',
-    description: <>Cloud-native event management platform.</>,
+    description: (
+      <>
+        A high-performance, fullstack serverless event media platform scaled to
+        50+ live events across 5 languages. Built using Hono, Next.js, Stripe,
+        and Cloudflare Workers, the platform features a custom Cloudflare R2
+        media engine with dynamic edge image optimization and manual D1 database
+        sharding (10 GB to 500 GB), delivering sub-50ms global API latency.
+      </>
+    ),
     startDate: new Date(Date.UTC(2025, 5)),
     endDate: 'Present'
   }
@@ -101,11 +113,11 @@ export default function Projects() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-180 scroll-mt-28 leading-8 sm:mb-40"
+      className="mb-24 w-full max-w-3xl scroll-mt-28 sm:mb-40"
       id="projects"
     >
       <motion.h2
-        className="mb-8 text-center text-3xl font-medium"
+        className="mb-10 text-center text-3xl font-medium"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -119,7 +131,7 @@ export default function Projects() {
           .map((item, index) => (
             <motion.div
               key={index}
-              className="bg-opacity-80 dark:bg-opacity-75 rounded-lg bg-white shadow-lg shadow-black/3 dark:border-black/40 dark:bg-gray-950"
+              className="bg-opacity-80 dark:bg-opacity-75 flex flex-col rounded-lg bg-white shadow-lg shadow-black/3 dark:border-black/40 dark:bg-gray-950"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
@@ -129,7 +141,7 @@ export default function Projects() {
                 delay: index * 0.1
               }}
             >
-              <div>
+              <div className="flex flex-1 flex-col">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -138,7 +150,7 @@ export default function Projects() {
                   placeholder="blur"
                   className="w-full rounded-t-lg"
                 />
-                <div>
+                <div className="flex flex-1 flex-col">
                   <ProjectData item={item} />
                 </div>
               </div>

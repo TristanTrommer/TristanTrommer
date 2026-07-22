@@ -20,11 +20,11 @@ export default function Contact() {
   return (
     <section
       ref={ref}
-      className="mb-24 w-full max-w-180 scroll-mt-28 text-center leading-8 sm:mb-40"
+      className="mb-24 w-full max-w-3xl scroll-mt-28 text-center sm:mb-40"
       id="contact"
     >
       <motion.h2
-        className="mb-8 text-center text-3xl font-medium"
+        className="mb-10 text-center text-3xl font-medium"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -38,8 +38,10 @@ export default function Contact() {
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
       >
-        <p>Use the contact form or send me an email.</p>
-        <p className="flex items-center justify-center gap-2">
+        <p className="text-base leading-6 text-gray-600 dark:text-gray-300">
+          Use the contact form or send me an email.
+        </p>
+        <p className="flex items-center justify-center gap-2 text-base leading-6 text-gray-600 dark:text-gray-300">
           <Link href={`mailto:${encodedEmail[0]}@${encodedEmail[1]}`}>
             {`${encodedEmail[0]}@${encodedEmail[1]}`}
           </Link>
@@ -53,7 +55,7 @@ export default function Contact() {
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
       >
         <form
-          className="my-10 flex w-full flex-col sm:w-180"
+          className="my-10 flex w-full flex-col"
           action={async formData => {
             const { error } = await email(formData);
 
@@ -64,21 +66,21 @@ export default function Contact() {
           }}
         >
           <input
-            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/3 outline-none sm:w-180 dark:bg-gray-950 dark:text-gray-50"
+            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/3 outline-none dark:bg-gray-950 dark:text-gray-50"
             name="email"
             type="email"
             required
             placeholder="Email"
           />
           <input
-            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/3 outline-none sm:w-180 dark:bg-gray-950 dark:text-gray-50"
+            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-14 w-full rounded-lg bg-white px-4 text-gray-900 shadow-lg shadow-black/3 outline-none dark:bg-gray-950 dark:text-gray-50"
             name="name"
             type="text"
             required
             placeholder="Name"
           />
           <textarea
-            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-52 w-full rounded-lg bg-white p-4 text-gray-900 shadow-lg shadow-black/3 outline-none sm:w-180 dark:bg-gray-950 dark:text-gray-50"
+            className="bg-opacity-80 dark:bg-opacity-75 mb-4 h-52 w-full rounded-lg bg-white p-4 text-gray-900 shadow-lg shadow-black/3 outline-none dark:bg-gray-950 dark:text-gray-50"
             name="message"
             placeholder="Message"
             required
