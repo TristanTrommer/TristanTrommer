@@ -29,7 +29,7 @@ export interface IRSSItem {
 export const rssJson = async (): Promise<IRSS | null> => {
   try {
     const response = await fetch('https://medium.com/feed/@tristantrommer', {
-      cache: 'no-store'
+      next: { revalidate: 86400 }
     });
     const data = await response.text();
 

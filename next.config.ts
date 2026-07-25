@@ -8,6 +8,37 @@ const nextConfig: NextConfig = {
   images: {
     loader: 'custom',
     loaderFile: './imageLoader.ts'
+  },
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=86400'
+          }
+        ]
+      },
+      {
+        source: '/legal-notice',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=2592000'
+          }
+        ]
+      },
+      {
+        source: '/privacy-policy',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=2592000'
+          }
+        ]
+      }
+    ];
   }
 };
 

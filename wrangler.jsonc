@@ -46,6 +46,9 @@
     "custom_domain": true
   },
   "workers_dev": false,
+  "cache": {
+    "enabled": true
+  },
   "env": {
     "preview": {
       "name": "tristantrommer-preview",
@@ -91,7 +94,10 @@
         "pattern": "preview.tristantrommer.com",
         "custom_domain": true
       },
-      "workers_dev": false
+      "workers_dev": false,
+      "cache": {
+        "enabled": true
+      }
     }
   }
 }

@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title: 'Legal Notice',
   description: 'Legal Notice',
