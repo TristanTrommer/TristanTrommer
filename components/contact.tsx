@@ -105,6 +105,9 @@ export default function Contact() {
         <Link href="/privacy-policy" target="_blank">
           Privacy Policy
         </Link>
+        <Link href="/cookie-policy" target="_blank">
+          Cookie Policy
+        </Link>
       </p>
     </section>
   );

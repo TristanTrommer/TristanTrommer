@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import NavigationContextProvider from '@/context/NavigationContext';
 import { ThemeProvider } from 'next-themes';
+import { ZARAZ_PURPOSE_IDS } from '@/components/Consent/zaraz-consent';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -94,6 +96,33 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50`}
       >
+        <Script
+          id="zaraz-consent"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function handleConsentUpdate() {
+                  var consent = zaraz.consent.getAll();
+
+                  var googleConsent = {
+                    'ad_storage': consent['${ZARAZ_PURPOSE_IDS.marketing}'] ? 'granted' : 'denied',
+                    'ad_user_data': consent['${ZARAZ_PURPOSE_IDS.marketing}'] ? 'granted' : 'denied',
+                    'ad_personalization': consent['${ZARAZ_PURPOSE_IDS.marketing}'] ? 'granted' : 'denied',
+                    'analytics_storage': consent['${ZARAZ_PURPOSE_IDS.statistics}'] ? 'granted' : 'denied',
+                    'functionality_storage': consent['${ZARAZ_PURPOSE_IDS.preferences}'] ? 'granted' : 'denied',
+                    'personalization_storage': consent['${ZARAZ_PURPOSE_IDS.preferences}'] ? 'granted' : 'denied',
+                    'security_storage': 'granted'
+                  };
+
+                  zaraz.set("google_consent_update", googleConsent);
+                }
+
+                document.addEventListener("zarazConsentChoicesUpdated", handleConsentUpdate);
+              })();
+            `
+          }}
+        />
         <ThemeProvider attribute="class">
           <NavigationContextProvider>{children}</NavigationContextProvider>
         </ThemeProvider>
