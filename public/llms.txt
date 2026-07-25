@@ -1,0 +1,95 @@
+# Tristan Trommer
+
+> Personal portfolio of Tristan Trommer, a Software Engineer at Zalando specializing in distributed systems, backend architecture, cloud-native engineering, system architecture, and high-velocity delivery.
+
+Website: https://tristantrommer.com
+Contact: hi@tristantrommer.com
+LinkedIn: https://linkedin.com/in/tristantrommer
+Medium: https://medium.com/@tristantrommer
+GitHub: https://github.com/tristantrommer
+
+## About
+
+Tristan Trommer is a Software Engineer specializing in distributed systems, backend architecture, and cloud-native engineering. He works in high-velocity, high-scale environments where performance, strict availability, and delivery speed directly drive business value.
+
+His engineering philosophy centers on extreme ownership, architectural pragmatism, and execution speed. His work includes refactoring legacy microservices, designing real-time event-streaming pipelines, planning zero-downtime framework migrations, and building full-stack serverless applications from scratch. He focuses on shipping clean, resilient, and highly maintainable code.
+
+He is particularly interested in system-design trade-offs, developer experience, and modernizing complex infrastructure without interrupting live operations.
+
+## Blog
+
+The website displays the latest posts from Tristan Trommer's Medium publication. Read all posts at https://medium.com/@tristantrommer.
+
+## Experience
+
+### Zalando, Berlin, Germany
+
+#### Software Engineer | Full-time, Hybrid | Jun 2025-Present
+
+- Authored technical design documents and an infrastructure roadmap to migrate an 88,000-line Scala/Cats Effect microservice to Kotlin and Spring Boot 4.x on JDK 25. Designed a zero-downtime Strangler Fig migration using traffic shadowing, feature flags, and automated `Double EXCEPT` SQL reconciliation across six rollout waves.
+- Achieved the team's highest delivery throughput: 120 Jira tickets, 218 story points, and approximately 165 merged pull requests in 12 months, with zero production regressions.
+- Designed and deployed a real-time event-driven consumer for high-concurrency streams, synchronizing distributed platform databases, establishing a single source of truth, and eliminating all 77 known data discrepancies.
+- Modernized legacy backend services from Java 8 to Java 21 and updated Scala/SBT dependencies, enabling previously blocked features.
+- Planned and executed migration of orchestration pipelines to managed Apache Airflow (MWAA v3), including IAM access policies, DAG refactoring, and legacy-environment decommissioning.
+- Redesigned platform exception workflows, reducing manual operational touches from 2.4 to 1.8 per issue, reducing support-ticket volume by 26%, and reducing NMV loss by 4%.
+- Designed and shipped an end-to-end task-queue architecture across nine pull requests to automate merchant-compliance processes.
+- Conducted more than 100 instructive code reviews per cycle, supported onboarding, and organized a six-to-seven-hour AI adoption workshop covering MCP servers and RAG.
+
+#### Junior Software Engineer | Full-time, Hybrid | Jul 2024-May 2025
+
+- Transitioned from Java to production-grade Scala in under three months and became a primary maintainer for high-throughput partner-facing APIs.
+- Engineered backend steering capabilities that expanded platform coverage to 96.5% of total GMV and approximately 80% of Connected Retail GMV.
+- Authored critical Scala features in external-team microservices, unblocking cross-department product rollouts under tight deadlines.
+- Optimized legacy data pipelines and microservices while reducing logging verbosity and cloud-resource usage.
+- Modernized partner-notification systems through centralized communication APIs, improving operational transparency and reducing support inquiries.
+
+#### Junior Software Engineer | Apprenticeship, Hybrid | Aug 2021-Jun 2024
+
+- Developed and maintained Java and Kotlin microservices, REST APIs, and internal tools with strict code-quality, testing, and version-control practices.
+- Refactored critical platform components and helped migrate away from legacy services, reducing technical debt and improving maintainability.
+- Participated across the full SDLC in agile, cross-functional teams using CI/CD, automated testing, and code review.
+
+### EventAssets, Berlin, Germany
+
+#### Founder | Self-employed, Remote | Oct 2025-Present
+
+- Built and bootstrapped a high-performance event-management and media platform, scaling to more than 50 active events with zero infrastructure downtime while owning product design, architecture, localization, and payment flows.
+- Architected a Cloudflare R2 media engine with dynamic edge resizing and WebP/AVIF transcoding, enabling sub-second guest photo uploads while reducing egress and bandwidth costs.
+- Designed and executed a manual Cloudflare D1 database-sharding strategy, scaling capacity from 10 GB to 500 GB for millions of media-metadata records with sub-50 ms global API responses.
+- Deployed a full-stack serverless platform with Hono, Next.js, Cloudflare Workers, Stripe, and Cloudflare Queues, localized in five languages.
+
+### Vessel X, Izmir, Turkiye
+
+#### Intern | Internship, Hybrid | Jun 2023-Aug 2023
+
+- Engineered a serverless GCP backend with Python and PostgreSQL to process real-time telemetry and device communication for an autonomous marine vessel.
+- Built low-latency data pipelines and REST endpoints for reliable synchronization under unstable network conditions.
+
+## Skills
+
+- System architecture, distributed systems, system migration, code refactoring, functional programming, agile methodologies, product management, and product marketing.
+- Java, Kotlin, Scala, Python, JavaScript, TypeScript, SQL, JSON, Spring Framework, Cats Effect, Flask, Next.js, React, and Tailwind CSS.
+- REST APIs, message queues, Apache Airflow, OpenTelemetry, jOOQ, unit testing, integration testing, continuous integration, continuous delivery, Git, GitHub, GitLab, Docker, and Kubernetes.
+- Cloudflare, Cloudflare Workers, Cloudflare Containers, Cloudflare D1, Cloudflare R2, Cloudflare Queues, Cloudflare Email Service, AWS, GCP, serverless computing, PostgreSQL, MySQL, and database sharding.
+
+## Projects
+
+### EventAssets | Jun 2025-Present
+
+Website: https://eventassets.com
+
+A high-performance, full-stack serverless event-media platform serving more than 50 live events in five languages. Built with Hono, Next.js, Stripe, and Cloudflare Workers. It includes a custom Cloudflare R2 media engine with dynamic edge image optimization and manual Cloudflare D1 sharding from 10 GB to 500 GB, delivering sub-50 ms global API latency.
+
+### Tristan Trommer Portfolio | Jan 2024
+
+Website: https://tristantrommer.com
+Source: https://github.com/tristantrommer/tristantrommer
+
+A high-performance personal portfolio and engineering blog deployed globally at the edge on Cloudflare Workers. Built with TypeScript, Next.js, Framer Motion, and Tailwind CSS for zero cold starts, fluid interactions, and sub-100 ms page loads worldwide.
+
+## Contact
+
+Use the contact form on https://tristantrommer.com/#contact or email hi@tristantrommer.com.
+
+Legal notice: https://tristantrommer.com/legal-notice
+Privacy policy: https://tristantrommer.com/privacy-policy
