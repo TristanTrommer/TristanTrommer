@@ -4,6 +4,9 @@ import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 
 initOpenNextCloudflareForDev();
 
+const STATIC_CACHE = 'public, max-age=86400, stale-while-revalidate=86400';
+const cc = [{ key: 'Cache-Control', value: STATIC_CACHE }];
+
 const nextConfig: NextConfig = {
   images: {
     loader: 'custom',
@@ -11,33 +14,9 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, stale-while-revalidate=86400'
-          }
-        ]
-      },
-      {
-        source: '/legal-notice',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, stale-while-revalidate=2592000'
-          }
-        ]
-      },
-      {
-        source: '/privacy-policy',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, stale-while-revalidate=2592000'
-          }
-        ]
-      }
+      { source: '/', headers: cc },
+      { source: '/legal-notice', headers: cc },
+      { source: '/privacy-policy', headers: cc }
     ];
   }
 };
