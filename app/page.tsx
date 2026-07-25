@@ -6,8 +6,6 @@ import Skills from '@/components/skills';
 import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 
-export const revalidate = false;
-
 export default function Page() {
   const websiteStructuredData = {
     '@context': 'https://schema.org',
