@@ -4,8 +4,8 @@ import { useActiveHash } from '@/hooks/useActiveHash';
 import React from 'react';
 import { motion } from 'motion/react';
 import Image, { StaticImageData } from 'next/image';
-import tristantrommerImage from '@/public/images/projects/tristantrommer.webp';
-import eventassetsImage from '@/public/images/projects/eventassets.webp';
+import tristantrommerImage from '@/app/images/projects/tristantrommer.webp';
+import eventassetsImage from '@/app/images/projects/eventassets.webp';
 import { PiGitBranchLight, PiLinkLight } from 'react-icons/pi';
 import { elapsedTimeString } from '@/helper/helper';
 

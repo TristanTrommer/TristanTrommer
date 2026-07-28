@@ -4,9 +4,9 @@ import { useActiveHash } from '@/hooks/useActiveHash';
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import Image, { StaticImageData } from 'next/image';
-import eventassetsLogo from '@/public/images/experience/eventassets.webp';
-import zalandoLogo from '@/public/images/experience/zalando.webp';
-import vesselxLogo from '@/public/images/experience/vesselx.webp';
+import eventassetsLogo from '@/app/images/experience/eventassets.webp';
+import zalandoLogo from '@/app/images/experience/zalando.webp';
+import vesselxLogo from '@/app/images/experience/vesselx.webp';
 import { elapsedTimeString } from '@/helper/helper';
 
 interface RoleItem {

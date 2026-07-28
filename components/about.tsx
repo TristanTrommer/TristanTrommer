@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useActiveHash } from '@/hooks/useActiveHash';
 import { useNavigationContext } from '@/context/NavigationContext';
-import tristantrommer from '@/public/images/tristantrommer.webp';
+import tristantrommer from '@/app/images/tristantrommer.webp';
 import {
   PiEnvelopeLight,
   PiGithubLogoLight,
