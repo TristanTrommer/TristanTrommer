@@ -8,6 +8,9 @@ const STATIC_CACHE = 'public, max-age=86400, stale-while-revalidate=86400';
 const cc = [{ key: 'Cache-Control', value: STATIC_CACHE }];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    useTypeScriptCli: true
+  },
   images: {
     loader: 'custom',
     loaderFile: './imageLoader.ts'

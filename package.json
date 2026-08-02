@@ -13,8 +13,7 @@
     "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
     "cf:deploy:preview": "npm run cf:build && opennextjs-cloudflare deploy --env preview",
     "format": "prettier --ignore-path ~/.gitignore --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:check": "prettier --ignore-path ~/.gitignore --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "typecheck": "node node_modules/typescript-7/bin/tsc --noEmit"
+    "format:check": "prettier --ignore-path ~/.gitignore --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md}": [
@@ -52,8 +51,7 @@
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "typescript-7": "npm:typescript@^7.0.2",
+    "typescript": "^7.0.2",
     "wrangler": "^4.118.0"
   }
 }
