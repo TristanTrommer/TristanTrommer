@@ -12,12 +12,12 @@
     "cf:build": "opennextjs-cloudflare build",
     "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
     "cf:deploy:preview": "npm run cf:build && opennextjs-cloudflare deploy --env preview",
-    "format": "prettier --ignore-path ~/.gitignore --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:check": "prettier --ignore-path ~/.gitignore --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --ignore-path .gitignore --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md}": [
-      "prettier --ignore-path ~/.gitignore --write"
+      "prettier --ignore-path .gitignore --write"
     ]
   },
   "dependencies": {
