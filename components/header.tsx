@@ -25,6 +25,10 @@ const navigationData: Array<{
     hash: '#experience'
   },
   {
+    name: 'Licenses & certifications',
+    hash: '#licenses-certifications'
+  },
+  {
     name: 'Skills',
     hash: '#skills'
   },
@@ -53,7 +57,7 @@ export default function Header() {
     <header className="relative z-[99]">
       <div className="border-opacity-40 bg-opacity-80 dark:bg-opacity-75 fixed top-0 left-1/2 flex w-full translate-x-[-50%] items-center justify-center rounded-none border border-white bg-white shadow-lg shadow-black/3 backdrop-blur-[0.5rem] sm:top-6 sm:w-auto sm:rounded-full dark:border-black/40 dark:bg-gray-950">
         <nav className="flex">
-          <ul className="mx-1 flex w-[22rem] flex-wrap items-center justify-center gap-2 py-1 text-gray-500 sm:mx-2 sm:w-[initial] sm:flex-nowrap sm:gap-6 sm:py-2">
+          <ul className="mx-1 flex w-[22rem] flex-wrap items-center justify-center gap-2 py-1 text-gray-500 sm:mx-2 sm:w-[calc(100vw-2rem)] sm:gap-3 sm:py-2 lg:w-[initial] lg:flex-nowrap lg:gap-6">
             {navigationData.map(hash => (
               <li
                 className="relative flex items-center justify-center"
