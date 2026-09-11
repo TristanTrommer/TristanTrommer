@@ -4,7 +4,7 @@
   "name": "tristantrommer",
   "main": ".open-next/worker.js",
   "minify": true,
-  "compatibility_date": "2025-10-08",
+  "compatibility_date": "2026-09-08",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "observability": {
     "logs": {
@@ -53,7 +53,7 @@
     "preview": {
       "name": "tristantrommer-preview",
       "main": ".open-next/worker.js",
-      "compatibility_date": "2025-10-08",
+      "compatibility_date": "2026-09-08",
       "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
       "observability": {
         "logs": {
