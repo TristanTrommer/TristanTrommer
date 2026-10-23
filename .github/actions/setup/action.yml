@@ -1,0 +1,30 @@
+name: Setup
+description: Node from .node-version and node_modules, cached on the lockfile.
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v7
+      with:
+        node-version-file: .node-version
+
+    - id: cache
+      uses: actions/cache@v6
+      with:
+        path: node_modules
+        key: node-modules-${{ runner.os }}-${{ hashFiles('.node-version', 'package-lock.json') }}
+
+    # On a node_modules miss (every lockfile change), npm ci reuses the tarballs
+    # of the previous lockfile instead of downloading everything again.
+    - if: steps.cache.outputs.cache-hit != 'true'
+      uses: actions/cache@v6
+      with:
+        path: ~/.npm
+        key: npm-${{ runner.os }}-${{ hashFiles('.node-version', 'package-lock.json') }}
+        restore-keys: npm-${{ runner.os }}-
+
+    - if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: npm ci --no-audit --no-fund --prefer-offline
+      env:
+        HUSKY: '0'

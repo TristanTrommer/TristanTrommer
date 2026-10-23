@@ -1,0 +1,115 @@
+name: Web
+
+# preview → preview.tristantrommer.com, main → tristantrommer.com. Production is
+# promoted by fast-forwarding main to preview. Cloudflare Workers Builds (the
+# dashboard's Git integration) must stay disconnected, or every push deploys twice.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID,
+#   CLOUDFLARE_ACCESS_CLIENT_ID / _SECRET (Access service token for OpenNext's
+#   R2 cache upload through *.workers.dev),
+#   SENTRY_AUTH_TOKEN_*, SENTRY_ORG_*, SENTRY_PROJECT_* (_PREVIEW / _PRODUCTION)
+# Repository variables (public values):
+#   NEXT_PUBLIC_SENTRY_DSN_*, NEXT_PUBLIC_TURNSTILE_SITE_KEY_* (_PREVIEW / _PRODUCTION)
+# Worker secrets (EMAIL_DOMAIN, TURNSTILE_SECRET) stay in Cloudflare.
+
+on:
+  push:
+    branches: [preview, main]
+    # The GitHub profile README and the design source: nothing to check or deploy.
+    paths-ignore: &paths-ignore
+      - README.md
+      - project.psd
+  # Checks only: pull requests never deploy. Drafts wait until ready for review.
+  pull_request:
+    branches: [preview]
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths-ignore: *paths-ignore
+  workflow_dispatch:
+
+concurrency:
+  group: web-${{ github.event.pull_request.number || github.ref }}
+  # A newer preview or PR push supersedes the running one; production deploys queue.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  web:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TARGET: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
+      DEPLOY: ${{ github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'preview') }}
+      DO_NOT_TRACK: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - id: setup
+        uses: ./.github/actions/setup
+
+      - id: verified
+        if: github.ref_name == 'main'
+        run: |
+          runs=$(gh run list --workflow web.yml --branch preview --commit "$GITHUB_SHA" \
+            --status success --json databaseId --jq length)
+          echo "skip=$([ "$runs" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      # Each check runs even when an earlier one failed, so one run reports every
+      # failure. Deploy keeps the implicit success(), so any failure still blocks it.
+      - name: Format
+        if: &check ${{ !cancelled() && steps.setup.outcome == 'success' && steps.verified.outputs.skip != 'true' }}
+        run: npm run format:check
+
+      - name: Lint
+        if: *check
+        run: npm run lint
+
+      - name: Typecheck
+        if: *check
+        run: npm run typecheck
+
+      - if: env.DEPLOY == 'true'
+        uses: actions/cache@v6
+        with:
+          path: .next/cache
+          key: next-${{ env.TARGET }}-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            next-${{ env.TARGET }}-${{ hashFiles('package-lock.json') }}-
+            next-${{ env.TARGET }}-
+
+      - name: Deploy
+        if: env.DEPLOY == 'true'
+        run: |
+          # The NEXT_PUBLIC_* values are inlined at build time: a missing one
+          # would ship a site without a working contact form or error reporting.
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID NEXT_PUBLIC_SENTRY_DSN NEXT_PUBLIC_TURNSTILE_SITE_KEY; do
+            [ -n "${!name}" ] || { echo "::error::$name is not set for $TARGET"; missing=1; }
+          done
+          [ -z "$missing" ] || exit 1
+
+          sha="${GITHUB_SHA::7}"
+          subject=$(git log -1 --format=%s | tr -d "'" | cut -c1-100)
+          npm run "$SCRIPT" -- --tag "$sha" --message "'$sha $subject'"
+          echo "Deployed \`$sha\` to $NEXT_PUBLIC_URL ($TARGET)" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          SCRIPT: ${{ env.TARGET == 'production' && 'cf:deploy' || 'cf:deploy:preview' }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ACCESS_CLIENT_ID: ${{ secrets.CLOUDFLARE_ACCESS_CLIENT_ID }}
+          CLOUDFLARE_ACCESS_CLIENT_SECRET: ${{ secrets.CLOUDFLARE_ACCESS_CLIENT_SECRET }}
+          NEXT_PUBLIC_ENVIRONMENT: ${{ env.TARGET }}
+          NEXT_PUBLIC_URL: ${{ env.TARGET == 'production' && 'https://tristantrommer.com' || 'https://preview.tristantrommer.com' }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ env.TARGET == 'production' && vars.NEXT_PUBLIC_SENTRY_DSN_PRODUCTION || vars.NEXT_PUBLIC_SENTRY_DSN_PREVIEW }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ env.TARGET == 'production' && vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY_PRODUCTION || vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY_PREVIEW }}
+          SENTRY_AUTH_TOKEN: ${{ env.TARGET == 'production' && secrets.SENTRY_AUTH_TOKEN_PRODUCTION || secrets.SENTRY_AUTH_TOKEN_PREVIEW }}
+          SENTRY_ORG: ${{ env.TARGET == 'production' && secrets.SENTRY_ORG_PRODUCTION || secrets.SENTRY_ORG_PREVIEW }}
+          SENTRY_PROJECT: ${{ env.TARGET == 'production' && secrets.SENTRY_PROJECT_PRODUCTION || secrets.SENTRY_PROJECT_PREVIEW }}
