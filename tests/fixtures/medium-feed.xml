@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:cc="http://cyber.law.harvard.edu/rss/creativeCommonsRssModule.html">
+    <channel>
+        <title><![CDATA[Stories by Tristan Trommer on Medium]]></title>
+        <description><![CDATA[Stories by Tristan Trommer on Medium]]></description>
+        <link>https://medium.com/@tristantrommer?source=rss-b491f62e0c77------2</link>
+        <image>
+            <url>https://cdn-images-1.medium.com/fit/c/150/150/1*5-U6VhgvKlc4x-5yFnZUvg.png</url>
+            <title>Stories by Tristan Trommer on Medium</title>
+            <link>https://medium.com/@tristantrommer?source=rss-b491f62e0c77------2</link>
+        </image>
+        <generator>Medium</generator>
+        <atom:link href="https://medium.com/@tristantrommer/feed" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Living Without Transactions on Cloudflare D1]]></title>
+            <link>https://medium.com/@tristantrommer/living-without-transactions-on-cloudflare-d1-e260874eed96?source=rss-b491f62e0c77------2</link>
+            <guid isPermaLink="false">https://medium.com/p/e260874eed96</guid>
+            <category><![CDATA[cloudflare-d1]]></category>
+            <category><![CDATA[sqlite]]></category>
+            <dc:creator><![CDATA[Tristan Trommer]]></dc:creator>
+            <pubDate>Wed, 14 Oct 2026 07:36:01 GMT</pubDate>
+            <atom:updated>2026-10-15T09:00:00.000Z</atom:updated>
+            <content:encoded><![CDATA[<figure><figcaption>Prisma’s $transaction() does not roll back on D1.</figcaption></figure><p>There is a comment at the top of a utility file.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Scaling Cloudflare D1 from 10 GB to 500 GB]]></title>
+            <link>https://medium.com/@tristantrommer/scaling-cloudflare-d1-0f1a2b3c4d5e?source=rss-b491f62e0c77------2</link>
+            <guid isPermaLink="false">https://medium.com/p/0f1a2b3c4d5e</guid>
+            <category><![CDATA[sharding]]></category>
+            <dc:creator><![CDATA[Tristan Trommer]]></dc:creator>
+            <pubDate>Mon, 03 Mar 2025 10:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Manual database sharding.</p>]]></description>
+        </item>
+    </channel>
+</rss>

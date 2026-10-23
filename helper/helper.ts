@@ -3,16 +3,18 @@ export const elapsedTime = (startDate: Date, endDate: Date | 'Present') => {
     endDate = new Date(Date.now());
   }
 
-  let years = endDate.getUTCFullYear() - startDate.getUTCFullYear();
-  let months = endDate.getUTCMonth() - startDate.getUTCMonth() + 1;
+  // The first and the last month both count, as on LinkedIn.
+  const months =
+    (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 +
+    endDate.getUTCMonth() -
+    startDate.getUTCMonth() +
+    1;
 
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-
-  return { years, months };
+  return { years: Math.floor(months / 12), months: months % 12 };
 };
+
+const unit = (count: number, singular: string, plural: string) =>
+  count === 0 ? '' : `${count} ${count === 1 ? singular : plural}`;
 
 export const elapsedTimeString = (
   startDate: Date,
@@ -20,9 +22,7 @@ export const elapsedTimeString = (
 ) => {
   const { years, months } = elapsedTime(startDate, endDate);
 
-  return (
-    (years != 0 ? years + ' yrs' : '') +
-    ' ' +
-    (months != 0 ? months + ' mos' : '')
-  );
+  return [unit(years, 'yr', 'yrs'), unit(months, 'mo', 'mos')]
+    .filter(Boolean)
+    .join(' ');
 };

@@ -27,6 +27,11 @@ interface TurnstileValidationResponse {
   cdata?: string;
 }
 
+// What the sender typed goes into the HTML of both emails, one of them to an
+// address they chose: as text, never as markup.
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, char => `&#${char.charCodeAt(0)};`);
+
 export const email = async (formData: FormData) => {
   const email = formData.get('email');
   const name = formData.get('name');
@@ -36,7 +41,7 @@ export const email = async (formData: FormData) => {
   if (
     !email ||
     typeof email !== 'string' ||
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email) ||
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email) ||
     !name ||
     typeof name !== 'string' ||
     !message ||
@@ -82,7 +87,7 @@ export const email = async (formData: FormData) => {
         from,
         replyTo,
         subject: `${name} sent a message via contact form!`,
-        html: `Name: ${name}<br/>Email: ${email}<br/>Message: ${message}`,
+        html: `Name: ${escapeHtml(name)}<br/>Email: ${escapeHtml(email)}<br/>Message: ${escapeHtml(message)}`,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
       }),
       env.SEND_EMAIL.send({
@@ -90,7 +95,7 @@ export const email = async (formData: FormData) => {
         from,
         replyTo,
         subject: `Thanks for your message, ${name}!`,
-        html: `Thanks for your message, ${name}!<br/><br/>I will get back to you soon.`,
+        html: `Thanks for your message, ${escapeHtml(name)}!<br/><br/>I will get back to you soon.`,
         text: `Thanks for your message, ${name}!\n\nI will get back to you soon.`
       })
     ]);

@@ -95,7 +95,7 @@ export default function Blog() {
             <p className="mb-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
               {item.content
                 ? item.content
-                    .replace(/<[^>]*>/g, '')
+                    .replace(/<[^>]*>/g, ' ')
                     .trim()
                     .split(/\s+/)
                     .slice(0, 30)

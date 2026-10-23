@@ -77,6 +77,10 @@ jobs:
         if: *check
         run: npm run typecheck
 
+      - name: Test
+        if: *check
+        run: npm test
+
       - if: env.DEPLOY == 'true'
         uses: actions/cache@v6
         with:
