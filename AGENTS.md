@@ -15,7 +15,7 @@ Never run as a check: `cf:deploy*` or `wrangler deploy` (they ship), `wrangler s
 
 ## CI and deploys
 
-- GitHub Actions (`.github/workflows/web.yml`) is the only deploy path: `preview` → preview.tristantrommer.com, `main` → tristantrommer.com, promoted by fast-forwarding `main` to `preview`. A `main` run skips the checks for a commit that already passed on `preview`, so a promotion must be a pure fast-forward. Pull requests into `preview` run the checks and never deploy.
+- GitHub Actions (`.github/workflows/web.yml`) is the only deploy path: `preview` → preview.tristantrommer.com, `main` → tristantrommer.com, promoted by fast-forwarding `main` to `preview`. A `main` run skips the checks for a commit that already passed on `preview`, so a promotion must be a pure fast-forward. Pull requests into `preview` run the checks and never deploy. The checks and the deploy are separate jobs, each with its own time limit: a failed one is re-run alone ("Re-run failed jobs"), and a job past its limit is cancelled mid-step ("The operation was canceled").
 - The secrets and variables CI needs are listed at the top of `web.yml`. `EMAIL_DOMAIN` and `TURNSTILE_SECRET` are Worker secrets in Cloudflare. `NEXT_PUBLIC_*` values are inlined at build time, so they come from the workflow, not from `wrangler.jsonc`.
 - Dependabot opens weekly grouped PRs against `preview` after a 5-day cooldown. Update by hand with the same cooldown: `npm install --min-release-age=5 <pkg>@<range>`.
 
@@ -23,6 +23,7 @@ Never run as a check: `cf:deploy*` or `wrangler deploy` (they ship), `wrangler s
 
 - `typescript` is the TS 6 alias (`@typescript/typescript6`) that `next build` uses; `tsc` is TS 7 (`@typescript/native`). Keep both.
 - `eslint` stays at `^9`: the react, import and jsx-a11y plugins of `eslint-config-next` don't support 10. `next` and `eslint-config-next` are pinned exactly and move together.
+- The incremental cache is R2 behind OpenNext's regional cache (`open-next.config.ts`), because the blog's Medium feed revalidates daily (`actions/rssJson.ts`): the read-only static-assets cache would fetch the feed on every visit. `WORKER_SELF_REFERENCE` is not bound: nothing uses OpenNext's revalidation queue.
 - `next.config.ts` aliases `@sentry/nextjs` to its Workers build on the server; Next would otherwise bundle the Node SDK into the Worker.
 - `helper/sentry-options.ts` is shared by browser, server and edge. Its `dataCollection` keeps Sentry 11 from sending request bodies (the contact form's name, email and message), cookies and user info; don't drop it.
 - `typecheck` runs `next typegen` first: `next-env.d.ts` is gitignored and declares the image imports.

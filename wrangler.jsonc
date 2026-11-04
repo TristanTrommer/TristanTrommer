@@ -23,12 +23,6 @@
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "tristantrommer"
-    }
-  ],
   "r2_buckets": [
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
@@ -72,12 +66,6 @@
         "binding": "ASSETS",
         "directory": ".open-next/assets"
       },
-      "services": [
-        {
-          "binding": "WORKER_SELF_REFERENCE",
-          "service": "tristantrommer-preview"
-        }
-      ],
       "r2_buckets": [
         {
           "binding": "NEXT_INC_CACHE_R2_BUCKET",
