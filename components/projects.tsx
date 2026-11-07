@@ -85,11 +85,14 @@ const projectsData: ProjectItem[] = [
     url: 'https://eventassets.com',
     description: (
       <>
-        A high-performance, fullstack serverless event media platform scaled to
-        50+ live events across 5 languages. Built using Hono, Next.js, Stripe,
-        and Cloudflare Workers, the platform features a custom Cloudflare R2
-        media engine with dynamic edge image optimization and manual D1 database
-        sharding (10 GB to 500 GB), delivering sub-50ms global API latency.
+        A high-performance, fullstack serverless event media platform with 400+
+        events, 12,000+ guest photos and videos, and 1,000+ guestbook entries
+        across 17 languages. It spans a Next.js web app, native iOS and Android
+        apps, and an MCP server that lets AI assistants manage events by chat,
+        built on Hono, Stripe, and six Cloudflare Workers. The platform features
+        a custom Cloudflare R2 media engine with dynamic edge image optimization
+        and manual D1 database sharding (10 GB to 500 GB capacity), delivering
+        sub-50ms global API latency.
       </>
     ),
     startDate: new Date(Date.UTC(2025, 5)),

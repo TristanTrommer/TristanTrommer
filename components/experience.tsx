@@ -88,10 +88,12 @@ const companiesData: CompanyGroup[] = [
         startDate: new Date(Date.UTC(2025, 9)),
         endDate: 'Present',
         bullets: [
-          'Built and bootstrapped a high-performance event management/media platform from end-to-end — scaling to 50+ active events with zero infrastructure downtime while owning product design, architecture, localization, and payment flows.',
+          'Built and bootstrapped a high-performance event management/media platform from end-to-end — a web app, native iOS and Android apps, and an MCP server for AI assistants — growing to 400+ events, 12,000+ guest photos and videos, and 1,000+ guestbook entries with zero infrastructure downtime while owning product design, architecture, localization, and payment flows.',
+          'Shipped native iOS and Android apps with Expo and React Native from one TypeScript monorepo, sharing the typed API client, data layer, validation, and translations with the Next.js web app.',
+          'Built a remote MCP server with OAuth sign-in, letting Claude, ChatGPT, Gemini CLI, Cursor, and other AI assistants manage events, guests, RSVPs, seating, agendas, and budgets by chat.',
           'Architected a media engine using Cloudflare R2 and automated image optimization (dynamic edge resizing, WebP/AVIF transcoding), enabling sub-second guest photo uploads while cutting egress and bandwidth costs.',
-          'Designed and executed a manual database sharding strategy on Cloudflare D1, scaling capacity from 10 GB to 500 GB to support millions of media metadata records at sub-50ms API response times globally.',
-          'Deployed a full-stack serverless stack (Hono, Next.js, Cloudflare Workers, Stripe) fully localized across 5 languages, leveraging Cloudflare Queues for asynchronous background tasks.'
+          'Designed and executed a manual database sharding strategy on Cloudflare D1, scaling capacity from 10 GB to 500 GB, with room for millions of media metadata records, at sub-50ms API response times globally.',
+          'Deployed a full-stack serverless stack of six Cloudflare Workers (Hono, Next.js, Stripe) fully localized across 17 languages, leveraging Cloudflare Queues for emails, ZIP downloads, and push notifications.'
         ]
       }
     ]

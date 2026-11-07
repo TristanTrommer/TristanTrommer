@@ -53,10 +53,12 @@ The website displays the latest posts from Tristan Trommer's Medium publication.
 
 #### Founder | Self-employed, Remote | Oct 2025-Present
 
-- Built and bootstrapped a high-performance event-management and media platform, scaling to more than 50 active events with zero infrastructure downtime while owning product design, architecture, localization, and payment flows.
+- Built and bootstrapped a high-performance event-management and media platform end to end (a web app, native iOS and Android apps, and an MCP server for AI assistants), growing to more than 400 events, 12,000 guest photos and videos, and 1,000 guestbook entries with zero infrastructure downtime while owning product design, architecture, localization, and payment flows.
+- Shipped native iOS and Android apps with Expo and React Native from one TypeScript monorepo, sharing the typed API client, data layer, validation, and translations with the Next.js web app.
+- Built a remote MCP server with OAuth sign-in that lets Claude, ChatGPT, Gemini CLI, Cursor, and other AI assistants manage events, guests, RSVPs, seating, agendas, and budgets by chat.
 - Architected a Cloudflare R2 media engine with dynamic edge resizing and WebP/AVIF transcoding, enabling sub-second guest photo uploads while reducing egress and bandwidth costs.
-- Designed and executed a manual Cloudflare D1 database-sharding strategy, scaling capacity from 10 GB to 500 GB for millions of media-metadata records with sub-50 ms global API responses.
-- Deployed a full-stack serverless platform with Hono, Next.js, Cloudflare Workers, Stripe, and Cloudflare Queues, localized in five languages.
+- Designed and executed a manual Cloudflare D1 database-sharding strategy, scaling capacity from 10 GB to 500 GB, with room for millions of media-metadata records, at sub-50 ms global API responses.
+- Deployed a full-stack serverless platform of six Cloudflare Workers with Hono, Next.js, Stripe, and Cloudflare Queues (emails, ZIP downloads, and push notifications), localized in 17 languages.
 
 ### Vessel X, Izmir, Turkiye
 
@@ -78,7 +80,7 @@ The website displays the latest posts from Tristan Trommer's Medium publication.
 
 Website: https://eventassets.com
 
-A high-performance, full-stack serverless event-media platform serving more than 50 live events in five languages. Built with Hono, Next.js, Stripe, and Cloudflare Workers. It includes a custom Cloudflare R2 media engine with dynamic edge image optimization and manual Cloudflare D1 sharding from 10 GB to 500 GB, delivering sub-50 ms global API latency.
+A high-performance, full-stack serverless event-media platform with more than 400 events, 12,000 guest photos and videos, and 1,000 guestbook entries in 17 languages. It spans a Next.js web app, native iOS and Android apps, and an MCP server that lets AI assistants manage events by chat, built with Hono, Stripe, and six Cloudflare Workers. It includes a custom Cloudflare R2 media engine with dynamic edge image optimization and manual Cloudflare D1 sharding with capacity scaled from 10 GB to 500 GB, delivering sub-50 ms global API latency.
 
 ### Tristan Trommer Portfolio | Jan 2024
 
