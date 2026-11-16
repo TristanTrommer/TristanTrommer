@@ -4,6 +4,7 @@
   "name": "tristantrommer",
   "main": ".open-next/worker.js",
   "minify": true,
+  "upload_source_maps": true,
   "compatibility_date": "2026-09-08",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "observability": {
